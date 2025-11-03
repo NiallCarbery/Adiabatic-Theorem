@@ -1,0 +1,16 @@
+# LaTeX intermediate and output files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.out
+*.gz
+*snm
+*.toc
+*.nav
+*.log
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.xdv
+*.pdf
