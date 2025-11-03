@@ -14,6 +14,7 @@
 % Title Information
 \title[Adiabatic Theorem]{Adiabatic Theorem and Quantum Annealing}
 \subtitle{A Mathematically Rigorous Treatment}
+<<<<<<< HEAD
 \author{Niall Carbery, Fintan Hughes, Shane Sweetman}
 \date{\today}
 \institute{QM Projecct}
@@ -22,23 +23,53 @@
 %\newcommand{\ket}[1]{\left|#1\right\rangle}
 %\newcommand{\bra}[1]{\left\langle#1\right|}
 %\newcommand{\braket}[2]{\left\langle#1\middle|#2\right\rangle}
+=======
+\author{Niall, Fintan, Shane}
+\date{\today}
+\institute{QM Project}
+
+% Custom commands
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
 \newcommand{\Hhat}{\hat{H}}
 \newcommand{\psiket}{\ket{\psi}}
 \newcommand{\dt}{\frac{d}{dt}}
 
+<<<<<<< HEAD
+=======
+% Default: no footline
+
+
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
 \begin{document}
 
 % Title Slide
 \begin{frame}
+<<<<<<< HEAD
     \titlepage
+=======
+    	\titlepage
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
 \end{frame}
 
 % Table of Contents
 \begin{frame}{Outline}
+<<<<<<< HEAD
     \tableofcontents
 \end{frame}
 
 % Section 1: Introduction
+=======
+    	\tableofcontents
+\end{frame}
+
+% Niall's Slides
+\setbeamertemplate{footline}{}
+\begin{frame}{Niall's Slides Placeholder}
+    Niall's slides 5 minutes allocated here.
+\end{frame}
+
+
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
 \section{Introduction}
 
 \begin{frame}{What is the Adiabatic Theorem?}
@@ -315,6 +346,15 @@
     where $R$ represents the parameters in $\Hhat(R)$.
 \end{frame}
 
+<<<<<<< HEAD
+=======
+% New Section
+\setbeamertemplate{footline}{}
+\begin{frame}{Someone's Slides Placeholder}
+    Someone's slides 5 minutes allocated here.
+\end{frame}
+
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
 % Section 5: Examples
 \section{Examples and Applications}
 
@@ -371,7 +411,11 @@
 
 \begin{frame}{Landau-Zener Model: Avoided Crossing Visualization}
     \begin{center}
+<<<<<<< HEAD
         \includegraphics[width=0.85\textwidth]{figures/avoided_crossing.png}
+=======
+        \includegraphics[width=0.75\textwidth]{figures/avoided_crossing.png}
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
     \end{center}
     
     \vspace{-0.3cm}
@@ -379,8 +423,11 @@
     \begin{itemize}
         \item The energy levels exhibit an \textbf{avoided crossing} at $\epsilon(t) = 0$
         \item Minimum gap: $\Delta E_{\min} = 2\Delta$ determines adiabatic time scale
+<<<<<<< HEAD
         \item Far from crossing: diabatic states $\approx$ adiabatic eigenstates
         \item Near crossing: maximum mixing between states
+=======
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
     \end{itemize}
 \end{frame}
 
@@ -410,6 +457,187 @@
     \end{alertblock}
 \end{frame}
 
+<<<<<<< HEAD
+=======
+
+% Section 6: Geometric Phase
+\section{Geometric Phase (Berry Phase)}
+
+\begin{frame}{Berry's Geometric Phase}
+    For a cyclic adiabatic evolution, where the Hamiltonian returns to its initial form:
+    
+    \begin{equation}
+        \Hhat(R(T)) = \Hhat(R(0))
+    \end{equation}
+    
+    The total phase acquired is:
+    \begin{equation}
+        e^{i\phi} = e^{i\theta_{\text{dyn}}} e^{i\gamma_n}
+    \end{equation}
+    
+    \begin{block}{Berry Phase (1984)}
+        \begin{equation}
+            \gamma_n = i\oint_{\mathcal{C}} \braket{n(R)}{\nabla_R n(R)} \cdot dR
+        \end{equation}
+        where $\mathcal{C}$ is the closed path in parameter space.
+    \end{block}
+    
+    \vspace{0.3cm}
+    
+    \textbf{Properties:}
+    \begin{itemize}
+        \item Gauge invariant (physical observable)
+        \item Geometric: depends only on path, not speed
+        \item Can be written as flux of Berry curvature
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Berry Connection and Curvature}
+    \begin{block}{Berry Connection (Vector Potential)}
+        \begin{equation}
+            \vec{A}_n(R) = i\braket{n(R)}{\nabla_R n(R)}
+        \end{equation}
+    \end{block}
+    
+    \begin{block}{Berry Curvature (Field Strength)}
+        \begin{equation}
+            \vec{F}_n(R) = \nabla_R \times \vec{A}_n(R)
+        \end{equation}
+    \end{block}
+    
+    By Stokes' theorem:
+    \begin{equation}
+        \gamma_n = \oint_{\mathcal{C}} \vec{A}_n \cdot dR = \iint_{\mathcal{S}} \vec{F}_n \cdot d\vec{S}
+    \end{equation}
+    
+    \vspace{0.3cm}
+    
+    \textbf{Analogy:} Berry phase is like the Aharonov-Bohm phase, but in parameter space rather than real space!
+\end{frame}
+
+% Section 7: Beyond the Simple Picture
+\section{Advanced Topics}
+
+\begin{frame}{Non-Adiabatic Transitions}
+    When adiabaticity breaks down, transitions occur between energy levels.
+    
+    \begin{block}{Landau-Zener Formula}
+        For a linear crossing: $E_1(t) = \alpha t$, $E_2(t) = -\alpha t + \Delta$
+        
+        Transition probability:
+        \begin{equation}
+            P_{1\to 2} = \exp\left(-\frac{\pi\Delta^2}{2\hbar\alpha}\right)
+        \end{equation}
+    \end{block}
+    
+    \vspace{0.3cm}
+    
+    \begin{itemize}
+        \item Small gap $\Delta$ $\Rightarrow$ high transition probability
+        \item Fast sweep (large $\alpha$) $\Rightarrow$ high transition probability
+        \item Slow sweep (small $\alpha$) $\Rightarrow$ adiabatic regime, $P \to 0$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Adiabatic Perturbation Theory}
+    We can systematically expand in the adiabatic parameter $\epsilon = \tau_{\text{dyn}}/T$:
+    
+    \begin{equation}
+        \ket{\psi(t)} = e^{i\theta_n(t)}\left[\ket{n(t)} + \epsilon\ket{\psi_n^{(1)}(t)} + \epsilon^2\ket{\psi_n^{(2)}(t)} + \cdots\right]
+    \end{equation}
+    
+    First-order correction:
+    \begin{equation}
+        \ket{\psi_n^{(1)}(t)} = \sum_{m\neq n}\frac{\bra{m}\dot{\Hhat}\ket{n}}{(E_n - E_m)^2}\ket{m}
+    \end{equation}
+    
+    \vspace{0.3cm}
+    
+    This shows:
+    \begin{itemize}
+        \item Transition amplitude $\propto 1/(E_n - E_m)^2$
+        \item Small gaps make adiabatic evolution difficult
+        \item Can estimate fidelity: $|\braket{n(t)}{\psi(t)}|^2 \approx 1 - \mathcal{O}(\epsilon^2)$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Generalization to Degenerate Levels}
+    When eigenvalues are degenerate, the theorem must be modified:
+    
+    \begin{itemize}
+        \item System can transition within degenerate subspace
+        \item Need to consider the entire degenerate subspace
+        \item Berry phase becomes a \textbf{matrix} (non-Abelian Berry connection)
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    
+    \begin{block}{Wilczek-Zee Connection}
+        For degenerate subspace with basis $\{\ket{n_a(R)}\}$:
+        \begin{equation}
+            (A_i)_{ab} = i\braket{n_a}{\partial_i n_b}
+        \end{equation}
+        This is a matrix-valued gauge potential.
+    \end{block}
+    
+    \vspace{0.3cm}
+    
+    Leads to non-Abelian geometric phases (important in topological quantum computation).
+\end{frame}
+
+\begin{frame}{Discussion: Diabatic vs Adiabatic Evolution}
+    \begin{columns}
+    \column{0.5\textwidth}
+    \textbf{Diabatic Evolution:}
+    \begin{itemize}
+        \item Fast changes in $\Hhat(t)$
+        \item System doesn't track instantaneous eigenstates
+        \item Transitions between levels
+        \item Example: Sudden approximation
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    
+    \textbf{When applicable:}
+    \begin{equation}
+        T \ll \frac{\hbar}{\Delta E}
+    \end{equation}
+    
+    \column{0.5\textwidth}
+    \textbf{Adiabatic Evolution:}
+    \begin{itemize}
+        \item Slow changes in $\Hhat(t)$
+        \item System follows instantaneous eigenstate
+        \item No transitions (to first order)
+        \item Example: Born-Oppenheimer
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    
+    \textbf{When applicable:}
+    \begin{equation}
+        T \gg \frac{\hbar}{\Delta E}
+    \end{equation}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    
+    \begin{block}{Discussion Question}
+        In between these limits, how do we calculate the transition probability? 
+        
+        \textbf{Answer:} Landau-Zener formula, perturbation theory, or numerical methods
+    \end{block}
+\end{frame}
+
+
+
+% New Section
+\setbeamertemplate{footline}{}
+\begin{frame}{Someone's Slides Placeholder}
+    Someone's slides 5 minutes allocated here.
+\end{frame}
+
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
 \begin{frame}{Application: Adiabatic Quantum Computation}
     \begin{block}{Basic Idea}
         \begin{enumerate}
@@ -469,7 +697,11 @@
         where $s_i \in \{-1, +1\}$ are spin variables (Pauli-z eigenvalues)
     \end{block}
     
+<<<<<<< HEAD
     \vspace{0.1cm}
+=======
+    \vspace{0.3cm}
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
     
     \textbf{Parameters:}
     \begin{itemize}
@@ -481,7 +713,11 @@
         \item $h_i$: Local field on spin $i$ (bias)
     \end{itemize}
     
+<<<<<<< HEAD
     \vspace{0.1cm}
+=======
+    \vspace{0.3cm}
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
     
     \textbf{Quantum Version:}
     \begin{equation}
@@ -493,7 +729,11 @@
 
 \begin{frame}{Visualizing the Ising Model: Max-Cut Example}
     \begin{center}
+<<<<<<< HEAD
         \includegraphics[width=0.95\textwidth]{figures/maxcut_example.png}
+=======
+        \includegraphics[width=0.75\textwidth]{figures/maxcut_example.png}
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
     \end{center}
     
     \vspace{-0.3cm}
@@ -837,7 +1077,11 @@
 
 \begin{frame}{Parameter Dependence: Effect of Tunneling Amplitude $\Delta$}
     \begin{center}
+<<<<<<< HEAD
         \includegraphics[width=0.85\textwidth]{figures/delta_comparison.png}
+=======
+        \includegraphics[width=0.60\textwidth]{figures/delta_comparison.png}
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
     \end{center}
     
     \vspace{-0.3cm}
@@ -925,6 +1169,7 @@
 \begin{frame}{Challenge:} Gap can be exponentially small for some problems!
 \end{frame}
 
+<<<<<<< HEAD
 % Section 6: Geometric Phase
 \section{Geometric Phase (Berry Phase)}
 
@@ -1093,6 +1338,9 @@
         \textbf{Answer:} Landau-Zener formula, perturbation theory, or numerical methods
     \end{block}
 \end{frame}
+=======
+
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
 
 \begin{frame}{Open Questions and Research Frontiers}
     \begin{enumerate}
@@ -1167,6 +1415,7 @@
     \end{block}
 \end{frame}
 
+<<<<<<< HEAD
 \begin{frame}{Further Reading}
     \textbf{Classic Papers:}
     \begin{itemize}
@@ -1193,6 +1442,8 @@
         \item Albash \& Lidar, "Adiabatic Quantum Computation" (2018)
     \end{itemize}
 \end{frame}
+=======
+>>>>>>> d78bbb6e0a9fb43612f148ddda10454551d5b602
 
 \begin{frame}{Numerical Verification: What We Observed}
     \textbf{From our Landau-Zener simulations:}
