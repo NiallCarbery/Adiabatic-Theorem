@@ -1,6 +1,5 @@
 \documentclass[aspectratio=169]{beamer}
-\usetheme{Madrid}
-\usecolortheme{default}
+\usepackage{customAmurmaple} % Include the custom Amurmaple theme
 
 % Packages
 \usepackage{amsmath}
@@ -16,51 +15,52 @@
 \subtitle{A Mathematically Rigorous Treatment}
 \author{Niall, Fintan, Shane}
 \date{\today}
-\institute{QM Project}
+\institute{Applied Quantum Mechanics}
+\titlegraphic{\includegraphics[width=2cm]{figures/uni.png}}
 
 % Custom commands
 \newcommand{\Hhat}{\hat{H}}
 \newcommand{\psiket}{\ket{\psi}}
 \newcommand{\dt}{\frac{d}{dt}}
 
-% Default: no footline
-
-
 \begin{document}
 
 % Title Slide
 \begin{frame}
-    	\titlepage
+    \titlepage
 \end{frame}
 
 % Table of Contents
 \begin{frame}{Outline}
-    	\tableofcontents
+    \tableofcontents
 \end{frame}
 
-% Niall's Slides
-\setbeamertemplate{footline}{}
-\begin{frame}{Niall's Slides Placeholder}
-    Niall's slides 5 minutes allocated here.
-\end{frame}
-
-
+% Introduction
 \section{Introduction}
 
 \begin{frame}{What is the Adiabatic Theorem?}
+    \begin{columns}
+    \hspace{0.5cm}
+    \column{0.75\textwidth}
     \begin{block}{Physical Statement}
         If a quantum system starts in an eigenstate of a time-dependent Hamiltonian, and if the Hamiltonian changes \textbf{sufficiently slowly}, the system will remain in the corresponding instantaneous eigenstate throughout the evolution.
     \end{block}
-    
+
     \vspace{0.5cm}
-    
+
     \begin{itemize}
         \item Key word: \textbf{``sufficiently slowly''}
         \item The system acquires a \textbf{dynamical phase} and a \textbf{geometric phase} (Berry phase)
         \item Fundamental to quantum computing (adiabatic quantum computation)
         \item Important in quantum chemistry, condensed matter physics
     \end{itemize}
+    
+    \column{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/Adiabatic-pendulum.png}
+    \end{columns}
 \end{frame}
+
 
 \begin{frame}{Historical Context}
     \begin{itemize}
@@ -69,26 +69,25 @@
         \item Geometric phase discovered by Berry (1984)
         \item Modern applications in quantum computing and quantum annealing
     \end{itemize}
-    
+
     \vspace{0.5cm}
-    
+
     \begin{block}{Classical Analogy}
         A pendulum whose length changes slowly will maintain its oscillation mode, but if changed rapidly, it will exhibit chaotic behavior.
     \end{block}
 \end{frame}
 
-% Section 2: Mathematical Setup
+% Mathematical Framework
 \section{Mathematical Framework}
 
 \begin{frame}{Time-Dependent Schrödinger Equation}
     Consider a time-dependent Hamiltonian $\Hhat(t)$:
-    
     \begin{equation}
         i\hbar \frac{\partial}{\partial t}\ket{\psi(t)} = \Hhat(t)\ket{\psi(t)}
     \end{equation}
-    
+
     \vspace{0.3cm}
-    
+
     \begin{block}{Instantaneous Eigenstates}
         At each time $t$, we can solve the eigenvalue problem:
         \begin{equation}
@@ -96,52 +95,51 @@
         \end{equation}
         where $\ket{n(t)}$ are the \textbf{instantaneous eigenstates} and $E_n(t)$ are the \textbf{instantaneous eigenvalues}.
     \end{block}
-    
+
     \vspace{0.3cm}
-    
+
     \textbf{Note:} These are \emph{not} solutions to the time-dependent Schrödinger equation, but rather eigenstates at fixed time $t$.
 \end{frame}
 
 \begin{frame}{Orthonormality and Completeness}
     The instantaneous eigenstates satisfy:
-    
+
     \begin{block}{Orthonormality}
         \begin{equation}
             \braket{n(t)}{m(t)} = \delta_{nm}
         \end{equation}
     \end{block}
-    
+
     \begin{block}{Completeness}
         \begin{equation}
             \sum_n \ket{n(t)}\bra{n(t)} = \mathbb{I}
         \end{equation}
     \end{block}
-    
+
     \vspace{0.3cm}
-    
+
     Any state can be expanded in this instantaneous basis:
     \begin{equation}
         \ket{\psi(t)} = \sum_n c_n(t) e^{i\theta_n(t)} \ket{n(t)}
     \end{equation}
-    
+
     where $c_n(t)$ are complex coefficients and $\theta_n(t)$ are phases to be determined.
 \end{frame}
 
-% Section 3: Derivation
+% Derivation of the Adiabatic Theorem
 \section{Derivation of the Adiabatic Theorem}
 
 \begin{frame}{Substituting into Schrödinger Equation}
     Substitute the expansion $\ket{\psi(t)} = \sum_n c_n(t) e^{i\theta_n(t)} \ket{n(t)}$ into the Schrödinger equation:
-    
     \begin{align}
         i\hbar \frac{\partial}{\partial t}\ket{\psi(t)} &= \Hhat(t)\ket{\psi(t)} \\
         i\hbar \sum_n \left[\dot{c}_n e^{i\theta_n}\ket{n} + c_n i\dot{\theta}_n e^{i\theta_n}\ket{n} + c_n e^{i\theta_n}\ket{\dot{n}}\right] &= \sum_n c_n e^{i\theta_n} E_n(t)\ket{n}
     \end{align}
-    
+
     where dots denote time derivatives: $\dot{c}_n = \frac{dc_n}{dt}$, $\ket{\dot{n}} = \frac{d}{dt}\ket{n(t)}$.
-    
+
     \vspace{0.3cm}
-    
+
     Dividing by $i\hbar$:
     \begin{equation}
         \sum_n \left[\frac{\dot{c}_n}{i\hbar} e^{i\theta_n}\ket{n} - c_n\dot{\theta}_n e^{i\theta_n}\ket{n} + \frac{c_n}{i\hbar} e^{i\theta_n}\ket{\dot{n}}\right] = \sum_n c_n e^{i\theta_n} \frac{E_n}{\hbar}\ket{n}
@@ -273,7 +271,7 @@
     \textbf{Physical Interpretation:} The time scale of Hamiltonian variation must be much larger than $\hbar/\Delta E$, where $\Delta E$ is the relevant energy gap.
 \end{frame}
 
-% Section 4: Statement of the Theorem
+% The Adiabatic Theorem
 \section{The Adiabatic Theorem}
 
 \begin{frame}{Formal Statement}
@@ -321,13 +319,13 @@
     where $R$ represents the parameters in $\Hhat(R)$.
 \end{frame}
 
-% New Section
+% Someone's Slides Placeholder
 \setbeamertemplate{footline}{}
 \begin{frame}{Shane's Slides Placeholder}
     Shane's slides 5 minutes allocated here.
 \end{frame}
 
-% Section 5: Examples
+% Examples and Applications
 \section{Examples and Applications}
 
 \begin{frame}{Example 1: Spin-1/2 in Rotating Magnetic Field}
@@ -383,7 +381,7 @@
 
 \begin{frame}{Landau-Zener Model: Avoided Crossing Visualization}
     \begin{center}
-        \includegraphics[width=0.75\textwidth]{figures/avoided_crossing.png}
+        \includegraphics[width=0.55\textwidth]{figures/avoided_crossing.png}
     \end{center}
     
     \vspace{-0.3cm}
@@ -696,7 +694,7 @@
 
 \begin{frame}{Energy Landscape: Solution Distribution}
     \begin{center}
-        \includegraphics[width=0.75\textwidth]{figures/maxcut_distribution.png}
+        \includegraphics[width=0.45\textwidth]{figures/maxcut_distribution.png}
     \end{center}
     
     \vspace{-0.3cm}
@@ -1025,7 +1023,7 @@
 
 \begin{frame}{Parameter Dependence: Effect of Tunneling Amplitude $\Delta$}
     \begin{center}
-        \includegraphics[width=0.60\textwidth]{figures/delta_comparison.png}
+        \includegraphics[width=0.50\textwidth]{figures/delta_comparison.png}
     \end{center}
     
     \vspace{-0.3cm}
