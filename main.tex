@@ -113,40 +113,40 @@
     \textbf{Note:} These are \emph{not} solutions to the time-dependent Schrödinger equation, but rather eigenstates at fixed time $t$.
 \end{frame}
 
-\begin{frame}{Skip?: Orthonormality and Completeness}
-    The instantaneous eigenstates satisfy:
+%\begin{frame}{Skip?: Orthonormality and Completeness}
+%    The instantaneous eigenstates satisfy:
+%
+%    \begin{block}{Orthonormality}
+%        \begin{equation}
+%            \braket{n(t)}{m(t)} = \delta_{nm}
+%        \end{equation}
+%    \end{block}
+%
+%    \begin{block}{Completeness}
+%        \begin{equation}
+%            \sum_n \ket{n(t)}\bra{n(t)} = \mathbb{I}
+%        \end{equation}
+%    \end{block}
+%
+%    \vspace{0.3cm}
 
-    \begin{block}{Orthonormality}
-        \begin{equation}
-            \braket{n(t)}{m(t)} = \delta_{nm}
-        \end{equation}
-    \end{block}
+%    Any state can be expanded in this instantaneous basis:
+%    \begin{equation}
+%        \ket{\psi(t)} = \sum_n c_n(t) e^{i\theta_n(t)} \ket{n(t)}
+%    \end{equation}
 
-    \begin{block}{Completeness}
-        \begin{equation}
-            \sum_n \ket{n(t)}\bra{n(t)} = \mathbb{I}
-        \end{equation}
-    \end{block}
-
-    \vspace{0.3cm}
-
-    Any state can be expanded in this instantaneous basis:
-    \begin{equation}
-        \ket{\psi(t)} = \sum_n c_n(t) e^{i\theta_n(t)} \ket{n(t)}
-    \end{equation}
-
-    where $c_n(t)$ are complex coefficients and $\theta_n(t)$ are phases to be determined.
-\end{frame}
+%    where $c_n(t)$ are complex coefficients and $\theta_n(t)$ are phases to be determined.
+%\end{frame}
 
 % Derivation of the Adiabatic Theorem
 \section{Derivation of the Adiabatic Theorem}
 
 \begin{frame}{Substituting into Schrödinger Equation}
     Substitute the expansion $\ket{\psi(t)} = \sum_n c_n(t) e^{i\theta_n(t)} \ket{n(t)}$ into the Schrödinger equation:
-    \begin{align}
-        i\hbar \frac{\partial}{\partial t}\ket{\psi(t)} &= \Hhat(t)\ket{\psi(t)} \\
-        i\hbar \sum_n \left[\dot{c}_n e^{i\theta_n}\ket{n} + c_n i\dot{\theta}_n e^{i\theta_n}\ket{n} + c_n e^{i\theta_n}\ket{\dot{n}}\right] &= \sum_n c_n e^{i\theta_n} E_n(t)\ket{n}
-    \end{align}
+    \begin{multline}
+        i\hbar \frac{\partial}{\partial t}\ket{\psi(t)} = \Hhat(t)\ket{\psi(t)} \\
+        i\hbar \sum_n \left[\dot{c}_n e^{i\theta_n}\ket{n} + c_n i\dot{\theta}_n e^{i\theta_n}\ket{n} + c_n e^{i\theta_n}\ket{\dot{n}}\right] = \sum_n c_n e^{i\theta_n} E_n(t)\ket{n}
+    \end{multline}
 
     where dots denote time derivatives: $\dot{c}_n = \frac{dc_n}{dt}$, $\ket{\dot{n}} = \frac{d}{dt}\ket{n(t)}$.
 
@@ -177,9 +177,7 @@
     \end{equation}
 \end{frame}
 
-\begin{frame}{Choice of Dynamical Phase}
-    We can simplify by choosing:
-    
+\begin{frame}{Simplifying Terms / Choice of Dynamical Phase}
     \begin{block}{Dynamical Phase}
         \begin{equation}
             \theta_m(t) = -\frac{1}{\hbar}\int_0^t E_m(t')dt' + \gamma_m(t)
@@ -194,11 +192,11 @@
         \end{equation}
     \end{block}
     
-    \vspace{0.3cm}
+    \vspace{0.1cm}
     
     Then: $\dot{\theta}_m = -\frac{E_m}{\hbar} + i\braket{m}{\dot{m}}$
     
-    \vspace{0.2cm}
+    \vspace{0.1cm}
     
     And our equation becomes:
     \begin{equation}
@@ -206,7 +204,7 @@
     \end{equation}
 \end{frame}
 
-\begin{frame}{Evaluating $\braket{m}{\dot{n}}$}
+\begin{frame}{What is $\braket{m}{\dot{n}}$}
     From the eigenvalue equation $\Hhat(t)\ket{n(t)} = E_n(t)\ket{n(t)}$, differentiate with respect to $t$:
     
     \begin{equation}
@@ -304,31 +302,31 @@
     \end{theorem}
 \end{frame}
 
-\begin{frame}{Components of the Phase}
-    The total phase $\theta_n(t)$ has two parts:
-    
-    \begin{block}{1. Dynamical Phase}
-        \begin{equation}
-            \theta_n^{\text{dyn}}(t) = -\frac{1}{\hbar}\int_0^t E_n(t')dt'
-        \end{equation}
-        This is the familiar time evolution phase from energy.
-    \end{block}
-    
-    \begin{block}{2. Geometric Phase (Berry Phase)}
-        \begin{equation}
-            \gamma_n(t) = i\int_0^t\braket{n(t')}{\partial_{t'}n(t')}dt'
-        \end{equation}
-        This depends only on the \textbf{path} taken through parameter space, not on the rate of traversal.
-    \end{block}
-    
-    \vspace{0.3cm}
-    
-    For a cyclic evolution where $\ket{n(T)} = e^{i\alpha}\ket{n(0)}$:
-    \begin{equation}
-        \gamma_n = i\oint \braket{n}{\nabla_R n} \cdot dR
-    \end{equation}
-    where $R$ represents the parameters in $\Hhat(R)$.
-\end{frame}
+%\begin{frame}{Components of the Phase}
+%    The total phase $\theta_n(t)$ has two parts:
+%    
+%    \begin{block}{1. Dynamical Phase}
+%        \begin{equation}
+%            \theta_n^{\text{dyn}}(t) = -\frac{1}{\hbar}\int_0^t E_n(t')dt'
+%        \end{equation}
+%        This is the familiar time evolution phase from energy.
+%    \end{block}
+%    
+%    \begin{block}{2. Geometric Phase (Berry Phase)}
+%        \begin{equation}
+%            \gamma_n(t) = i\int_0^t\braket{n(t')}{\partial_{t'}n(t')}dt'
+%        \end{equation}
+%        This depends only on the \textbf{path} taken through parameter space, not on the rate of traversal.
+%    \end{block}
+%    
+%    \vspace{0.3cm}
+%    
+%    For a cyclic evolution where $\ket{n(T)} = e^{i\alpha}\ket{n(0)}$:
+%    \begin{equation}
+%        \gamma_n = i\oint \braket{n}{\nabla_R n} \cdot dR
+%    \end{equation}
+%    where $R$ represents the parameters in $\Hhat(R)$.
+%\end{frame}
 
 % Someone's Slides Placeholder
 \setbeamertemplate{footline}{}
@@ -859,55 +857,55 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Embedding Problems on Quantum Annealers}
-    \textbf{Hardware Constraints:}
-    
-    Real quantum annealers (e.g., D-Wave) have limited connectivity:
-    
-    \vspace{0.3cm}
-    
-    \begin{columns}
-    \column{0.5\textwidth}
-    \textbf{Chimera Graph (D-Wave):}
-    \begin{itemize}
-        \item Unit cells of $K_{4,4}$ bipartite graphs
-        \item Not fully connected
-        \item Typical: 2000+ qubits
-        \item Connectivity: $\sim$6 per qubit
-    \end{itemize}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Pegasus Graph (newer):}
-    \begin{itemize}
-        \item Higher connectivity ($\sim$15)
-        \item 5000+ qubits
-        \item Better for dense problems
-    \end{itemize}
-    
-    \column{0.5\textwidth}
-    \textbf{Minor Embedding:}
-    
-    Problem: Map logical problem graph to hardware graph
-    
-    \vspace{0.3cm}
-    
-    \textbf{Technique:} Chain multiple physical qubits to represent one logical qubit
-    
-    \vspace{0.3cm}
-    
-    \textbf{Challenges:}
-    \begin{itemize}
-        \item Uses more qubits
-        \item Requires strong ferromagnetic coupling for chains
-        \item Chain breaks $\Rightarrow$ errors
-    \end{itemize}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Tools:} minorminer, D-Wave Ocean SDK
-    \end{columns}
-\end{frame}
+%\begin{frame}{Embedding Problems on Quantum Annealers}
+%    \textbf{Hardware Constraints:}
+%    
+%    Real quantum annealers (e.g., D-Wave) have limited connectivity:
+%    
+%    \vspace{0.3cm}
+%    
+%    \begin{columns}
+%    \column{0.5\textwidth}
+%    \textbf{Chimera Graph (D-Wave):}
+%    \begin{itemize}
+%        \item Unit cells of $K_{4,4}$ bipartite graphs
+%        \item Not fully connected
+%        \item Typical: 2000+ qubits
+%        \item Connectivity: $\sim$6 per qubit
+%    \end{itemize}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Pegasus Graph (newer):}
+%    \begin{itemize}
+%        \item Higher connectivity ($\sim$15)
+%        \item 5000+ qubits
+%        \item Better for dense problems
+%    \end{itemize}
+%    
+%    \column{0.5\textwidth}
+%    \textbf{Minor Embedding:}
+%    
+%    Problem: Map logical problem graph to hardware graph
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Technique:} Chain multiple physical qubits to represent one logical qubit
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Challenges:}
+%    \begin{itemize}
+%        \item Uses more qubits
+%        \item Requires strong ferromagnetic coupling for chains
+%        \item Chain breaks $\Rightarrow$ errors
+%    \end{itemize}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Tools:} minorminer, D-Wave Ocean SDK
+%    \end{columns}
+%\end{frame}
 
 \begin{frame}{Adiabatic Theorem in Quantum Annealing}
     \textbf{Success condition based on adiabatic theorem:}
@@ -974,63 +972,63 @@
     \end{alertblock}
 \end{frame}
 
-\begin{frame}{Practical Example: Number Partitioning}
-    \textbf{Problem:} Given numbers $\{a_1, a_2, \ldots, a_N\}$, partition into two sets with equal sums.
-    
-    \vspace{0.3cm}
-    
-    \begin{block}{QUBO Formulation}
-        Minimize:
-        \begin{equation}
-            f(x) = \left(\sum_{i=1}^N a_i x_i - \frac{S}{2}\right)^2
-        \end{equation}
-        where $S = \sum_i a_i$ is the total sum and $x_i \in \{0,1\}$
-        
-        Expanding to QUBO form:
-        \begin{equation}
-            f(x) = \sum_i Q_{ii} x_i + \sum_{i<j} Q_{ij} x_i x_j
-        \end{equation}
-        with $Q_{ij} = 2a_i a_j$ and $Q_{ii} = a_i^2 - a_i S$
-    \end{block}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Quantum Annealing Approach:}
-    \begin{enumerate}
-        \item Encode QUBO in Ising Hamiltonian
-        \item Initialize in transverse field ground state
-        \item Adiabatically reduce transverse field, increase Ising couplings
-        \item Measure spins to read partition
-    \end{enumerate}
-\end{frame}
+%\begin{frame}{Practical Example: Number Partitioning}
+%    \textbf{Problem:} Given numbers $\{a_1, a_2, \ldots, a_N\}$, partition into two sets with equal sums.
+%    
+%    \vspace{0.3cm}
+%    
+%    \begin{block}{QUBO Formulation}
+%        Minimize:
+%        \begin{equation}
+%            f(x) = \left(\sum_{i=1}^N a_i x_i - \frac{S}{2}\right)^2
+%        \end{equation}
+%        where $S = \sum_i a_i$ is the total sum and $x_i \in \{0,1\}$
+%        
+%        Expanding to QUBO form:
+%        \begin{equation}
+%            f(x) = \sum_i Q_{ii} x_i + \sum_{i<j} Q_{ij} x_i x_j
+%        \end{equation}
+%        with $Q_{ij} = 2a_i a_j$ and $Q_{ii} = a_i^2 - a_i S$
+%    \end{block}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Quantum Annealing Approach:}
+%    \begin{enumerate}
+%        \item Encode QUBO in Ising Hamiltonian
+%        \item Initialize in transverse field ground state
+%        \item Adiabatically reduce transverse field, increase Ising couplings
+%        \item Measure spins to read partition
+%    \end{enumerate}
+%\end{frame}
 
-\begin{frame}{Challenges and Mitigation Strategies}
-    \begin{block}{Main Challenges}
-        \begin{enumerate}
-            \item \textbf{Small energy gaps} $\Rightarrow$ Need long annealing times
-            \item \textbf{Decoherence} $\Rightarrow$ Limits effective annealing time
-            \item \textbf{Control errors} $\Rightarrow$ Imperfect problem encoding
-            \item \textbf{Limited connectivity} $\Rightarrow$ Embedding overhead
-        \end{enumerate}
-    \end{block}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Mitigation Strategies:}
-    
-    \begin{itemize}
-        \item \textbf{Pause-and-quench:} Pause anneal at gap, then quench
-        \item \textbf{Reverse annealing:} Start from classical solution, refine quantumly
-        \item \textbf{Multiple runs:} Statistical sampling to find better solutions
-        \item \textbf{Hybrid algorithms:} Combine quantum annealing with classical optimization
-        \item \textbf{Problem decomposition:} Break large problem into smaller sub-problems
-        \item \textbf{Parameter tuning:} Optimize chain strengths, annealing schedule
-    \end{itemize}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Success Metric:} Time-to-solution (including multiple runs) vs classical methods
-\end{frame}
+%\begin{frame}{Challenges and Mitigation Strategies}
+%    \begin{block}{Main Challenges}
+%        \begin{enumerate}
+%            \item \textbf{Small energy gaps} $\Rightarrow$ Need long annealing times
+%            \item \textbf{Decoherence} $\Rightarrow$ Limits effective annealing time
+%            \item \textbf{Control errors} $\Rightarrow$ Imperfect problem encoding
+%            \item \textbf{Limited connectivity} $\Rightarrow$ Embedding overhead
+%        \end{enumerate}
+%    \end{block}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Mitigation Strategies:}
+%    
+%    \begin{itemize}
+%        \item \textbf{Pause-and-quench:} Pause anneal at gap, then quench
+%        \item \textbf{Reverse annealing:} Start from classical solution, refine quantumly
+%        \item \textbf{Multiple runs:} Statistical sampling to find better solutions
+%        \item \textbf{Hybrid algorithms:} Combine quantum annealing with classical optimization
+%        \item \textbf{Problem decomposition:} Break large problem into smaller sub-problems
+%        \item \textbf{Parameter tuning:} Optimize chain strengths, annealing schedule
+%    \end{itemize}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Success Metric:} Time-to-solution (including multiple runs) vs classical methods
+%\end{frame}
 
 \begin{frame}{Parameter Dependence: Effect of Tunneling Amplitude $\Delta$}
     \begin{center}
@@ -1158,21 +1156,21 @@
 % Section 8: Conclusion
 \section{Conclusion}
 
-\begin{frame}{Summary}
-    \begin{enumerate}
-        \item \textbf{Adiabatic Theorem:} Slow changes keep system in instantaneous eigenstate
-        \item \textbf{Key Condition:} $T \gg \hbar/\Delta E$ and $|\dot{\Hhat}| \ll (\Delta E)^2/\hbar$
-        \item \textbf{Phase Evolution:} Dynamical phase + Geometric phase (Berry phase)
-        \item \textbf{Berry Phase:} Geometric property of parameter space, gauge invariant
-        \item \textbf{Applications:} 
-        \begin{itemize}
-            \item Adiabatic quantum computation
-            \item Quantum annealing
-            \item Topological phases of matter
-            \item Molecular dynamics (Born-Oppenheimer approximation)
-        \end{itemize}
-    \end{enumerate}
-\end{frame}
+%\begin{frame}{Summary}
+%    \begin{enumerate}
+%        \item \textbf{Adiabatic Theorem:} Slow changes keep system in instantaneous eigenstate
+%        \item \textbf{Key Condition:} $T \gg \hbar/\Delta E$ and $|\dot{\Hhat}| \ll (\Delta E)^2/\hbar$
+%        \item \textbf{Phase Evolution:} Dynamical phase + Geometric phase (Berry phase)
+%        \item \textbf{Berry Phase:} Geometric property of parameter space, gauge invariant
+%        \item \textbf{Applications:} 
+%        \begin{itemize}
+%            \item Adiabatic quantum computation
+%            \item Quantum annealing
+%            \item Topological phases of matter
+%            \item Molecular dynamics (Born-Oppenheimer approximation)
+%        \end{itemize}
+%    \end{enumerate}
+%\end{frame}
 
 \begin{frame}{Key Insights}
     \begin{block}{Mathematical Rigor}

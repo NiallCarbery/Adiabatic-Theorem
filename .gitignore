@@ -13,4 +13,5 @@
 *.fls
 *.synctex.gz
 *.xdv
-*.pdf
+.pdf
+*.synctex(busy)
