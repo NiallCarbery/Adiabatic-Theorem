@@ -9,6 +9,7 @@
 \usepackage{tikz}
 \usepackage{bm}
 \usepackage{hyperref}
+\usepackage{animate}
 
 % Title Information
 \title[Adiabatic Theorem]{Adiabatic Theorem and Quantum Annealing}
@@ -55,9 +56,12 @@
         \item Important in quantum chemistry, condensed matter physics
     \end{itemize}
     
-    \column{0.25\textwidth}
+    \column{0.3\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/Adiabatic-pendulum.png}
+    \animategraphics[autoplay, loop, width=\textwidth]{25}{figures/frames/slow_adiabatic_potential_animation_}{000}{099}
+    \vspace{0.5cm}
+    \animategraphics[autoplay, loop, width=\textwidth]{25}{figures/frames/slow_adiabatic_potential_animation_}{000}{099}
+    %\includegraphics[width=0.8\textwidth]{figures/Adiabatic-pendulum.png}
     \end{columns}
 \end{frame}
 
@@ -75,6 +79,14 @@
     \begin{block}{Classical Analogy}
         A pendulum whose length changes slowly will maintain its oscillation mode, but if changed rapidly, it will exhibit chaotic behavior.
     \end{block}
+\end{frame}
+
+\begin{frame}{Animations}
+    
+% Animation: frames extracted from the original GIF into figures/frames/
+% Generated frames: slow_adiabatic_potential_animation_000.png ... _099.png
+\animategraphics[autoplay, loop, width=0.7\textwidth]{25}{figures/frames/slow_adiabatic_potential_animation_}{000}{099}
+
 \end{frame}
 
 % Mathematical Framework
@@ -101,7 +113,7 @@
     \textbf{Note:} These are \emph{not} solutions to the time-dependent Schrödinger equation, but rather eigenstates at fixed time $t$.
 \end{frame}
 
-\begin{frame}{Orthonormality and Completeness}
+\begin{frame}{Skip?: Orthonormality and Completeness}
     The instantaneous eigenstates satisfy:
 
     \begin{block}{Orthonormality}
@@ -149,11 +161,10 @@
 \begin{frame}{Projecting onto Eigenstates}
     Take the inner product with $\bra{m(t)}$:
     
-    \begin{multline}
-        \frac{\dot{c}_m}{i\hbar} e^{i\theta_m} - c_m\dot{\theta}_m e^{i\theta_m} + \frac{c_m}{i\hbar} e^{i\theta_m}\braket{m}{\dot{m}} \\
-        + \sum_{n\neq m} \frac{c_n}{i\hbar} e^{i\theta_n}\braket{m}{\dot{n}} = c_m e^{i\theta_m} \frac{E_m}{i\hbar}
-    \end{multline}
-    
+    \begin{equation}
+        \frac{\dot{c}_m}{i\hbar} e^{i\theta_m} - c_m\dot{\theta}_m e^{i\theta_m} + \frac{c_m}{i\hbar} e^{i\theta_m}\braket{m}{\dot{m}} = \sum_{n\neq m} \frac{c_n}{i\hbar} e^{i\theta_n}\braket{m}{\dot{n}}
+    \end{equation}
+
     \vspace{0.3cm}
     
     We used orthonormality: $\braket{m}{n} = \delta_{mn}$ and $\sum_{n\neq m}\braket{m}{n} = 0$.
