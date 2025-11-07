@@ -338,6 +338,8 @@
 \section{Examples and Applications}
 
 \begin{frame}{Example 1: Spin-1/2 in Rotating Magnetic Field}
+    \begin{columns}
+    \column{0.7\textwidth}
     Consider a spin-1/2 particle in a magnetic field that rotates slowly:
     
     \begin{equation}
@@ -358,9 +360,17 @@
         \item The spin remains aligned with $\vec{B}(t)$ (adiabatic following)
         \item After one full rotation ($t = 2\pi/\omega$), acquires Berry phase: $\gamma = \pi(1 - \cos\theta)$
     \end{itemize}
+
+    \column{0.3\textwidth}
+    \centering
+    \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_berry_phase/frame_}{0000}{0119}
+    \end{columns}
+
 \end{frame}
 
 \begin{frame}{Example 2: Two-Level System (Landau-Zener Model)}
+
+
     Consider the Landau-Zener Hamiltonian:
     \begin{equation}
         \Hhat(t) = -\Delta \sigma_x - \epsilon(t) \sigma_z
@@ -386,6 +396,10 @@
     \end{block}
     
     This is the canonical model for avoided crossings and adiabatic transitions!
+
+
+
+
 \end{frame}
 
 \begin{frame}{Landau-Zener Model: Avoided Crossing Visualization}
