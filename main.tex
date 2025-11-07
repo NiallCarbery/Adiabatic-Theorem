@@ -339,7 +339,8 @@
 
 \begin{frame}{Example 1: Spin-1/2 in Rotating Magnetic Field}
     \begin{columns}
-    \column{0.7\textwidth}
+    \hspace{0.25cm}
+    \column{0.725\textwidth}
     Consider a spin-1/2 particle in a magnetic field that rotates slowly:
     
     \begin{equation}
@@ -369,7 +370,9 @@
 \end{frame}
 
 \begin{frame}{Example 2: Two-Level System (Landau-Zener Model)}
-
+    \begin{columns}
+    \hspace{0.25cm}
+    \column{0.5\textwidth}
 
     Consider the Landau-Zener Hamiltonian:
     \begin{equation}
@@ -387,7 +390,23 @@
     
     Energy gap at crossing ($\epsilon = 0$): $\Delta E_{\min} = 2\Delta$
     
-    \vspace{0.3cm}
+    \column{0.5\textwidth}
+    \centering
+    \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_lz_no_bloch/frame_}{0000}{0119}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Landau-Zener Model: Avoided Crossing Visualization}
+    \begin{columns}
+    \hspace{0.25cm}
+    \column{0.55\textwidth}
+    
+    \begin{itemize}
+        \item The energy levels exhibit an \textbf{avoided crossing} at $\epsilon(t) = 0$
+        \item Minimum gap: $\Delta E_{\min} = 2\Delta$ determines adiabatic time scale
+    \end{itemize}
+
+    \vspace{0.15cm}
     
     \begin{block}{Adiabatic Condition}
         \begin{equation}
@@ -396,23 +415,10 @@
     \end{block}
     
     This is the canonical model for avoided crossings and adiabatic transitions!
-
-
-
-
-\end{frame}
-
-\begin{frame}{Landau-Zener Model: Avoided Crossing Visualization}
-    \begin{center}
-        \includegraphics[width=0.55\textwidth]{figures/avoided_crossing.png}
-    \end{center}
-    
-    \vspace{-0.3cm}
-    
-    \begin{itemize}
-        \item The energy levels exhibit an \textbf{avoided crossing} at $\epsilon(t) = 0$
-        \item Minimum gap: $\Delta E_{\min} = 2\Delta$ determines adiabatic time scale
-    \end{itemize}
+    \column{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/avoided_crossing.png}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Discussion: Avoided Crossing Physics}
@@ -1044,19 +1050,19 @@
 %    \textbf{Success Metric:} Time-to-solution (including multiple runs) vs classical methods
 %\end{frame}
 
-\begin{frame}{Parameter Dependence: Effect of Tunneling Amplitude $\Delta$}
-    \begin{center}
-        \includegraphics[width=0.50\textwidth]{figures/delta_comparison.png}
-    \end{center}
-    
-    \vspace{-0.3cm}
-    
-    \begin{itemize}
-        \item \textbf{Larger $\Delta$}: Larger gap $\Rightarrow$ longer time needed for 95\% fidelity
-        \item \textbf{Smaller $\Delta$}: Smaller gap $\Rightarrow$ easier to satisfy adiabatic condition
-        \item Critical time scale: $T_{\text{critical}} \propto 1/\Delta^2$
-    \end{itemize}
-\end{frame}
+%\begin{frame}{Parameter Dependence: Effect of Tunneling Amplitude $\Delta$}
+%    \begin{center}
+%        \includegraphics[width=0.50\textwidth]{figures/delta_comparison.png}
+%    \end{center}
+%    
+%    \vspace{-0.3cm}
+%   
+%    \begin{itemize}
+%        \item \textbf{Larger $\Delta$}: Larger gap $\Rightarrow$ longer time needed for 95\% fidelity
+%        \item \textbf{Smaller $\Delta$}: Smaller gap $\Rightarrow$ easier to satisfy adiabatic condition
+%        \item Critical time scale: $T_{\text{critical}} \propto 1/\Delta^2$
+%    \end{itemize}
+%\end{frame}
 
 \begin{frame}{Discussion: Scaling and the Adiabatic Theorem}
     \begin{block}{Discussion Points}
