@@ -39,6 +39,54 @@
 % Introduction
 \section{Introduction}
 
+\begin{frame}{Historical Context}
+    \begin{columns}
+    \hspace{0.5cm}
+    \column{0.6\textwidth}
+    \begin{block}{Know it alls}
+        \centering
+        
+        Einstein 1911 at Solvay Conference had to deal with cheeky Lorentz questioning the quantum hypothesis $E=nhv$ for atomic oscillators. 
+    \end{block}  
+        \vspace{0.5cm}
+
+        \centering
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.8\textwidth]{figures/ECorrection.png}
+            \caption{1911 Solvay Conference \textit{Windows Paint and Bill Gates}} 
+        \end{figure}
+
+    \column{0.4\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{figures/Solvay_conference.png}
+            \caption{1911 Solvay Conference \textit{Wikimedia Commons}}
+        \end{figure}
+
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Historical Context}
+    \begin{columns}
+    \hspace{0.5cm}
+    \column{0.7\textwidth}
+
+    \begin{block}{Classical Analogy}
+        A pendulum whose length changes slowly will maintain its oscillation mode, but if changed rapidly, it will exhibit chaotic behavior.
+    \end{block}
+
+    \vspace{0.5cm}
+
+    Also called adiabtic invariant, written by Ehrenfest in 1916, and extended to quantum mechanics by Born and Fock in 1928.
+
+    \column{0.3\textwidth}
+
+    \includegraphics[width=0.8\textwidth]{figures/Adiabatic-pendulum.png}
+    \end{columns}
+\end{frame}
+
 \begin{frame}{What is the Adiabatic Theorem?}
     \begin{columns}
     \hspace{0.5cm}
@@ -62,30 +110,6 @@
     \animategraphics[autoplay, loop, width=\textwidth]{20}{figures/frames/slow_adiabatic_potential_animation_}{000}{099}
     \text{Abrupt Change}
     \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_adiabatic/adiabatic_potential_animation_}{000}{083}
-    \end{columns}
-\end{frame}
-
-
-\begin{frame}{Historical Context}
-    \begin{columns}
-    \hspace{0.5cm}
-    \column{0.7\textwidth}
-    \begin{itemize}
-        \item First formulated by Max Born and Vladimir Fock (1928)
-        \item Further developed by Kato (1950)
-        \item Geometric phase discovered by Berry (1984)
-        \item Modern applications in quantum computing and quantum annealing
-    \end{itemize}
-
-    \vspace{0.5cm}
-
-    \begin{block}{Classical Analogy}
-        A pendulum whose length changes slowly will maintain its oscillation mode, but if changed rapidly, it will exhibit chaotic behavior.
-    \end{block}
-
-    \column{0.3\textwidth}
-
-    \includegraphics[width=0.8\textwidth]{figures/Adiabatic-pendulum.png}
     \end{columns}
 \end{frame}
 
@@ -222,8 +246,7 @@
     \begin{equation}
         \bra{m}\dot{\Hhat}\ket{n} + E_m\braket{m}{\dot{n}} = E_n\braket{m}{\dot{n}}
     \end{equation}
-    
-    Therefore:
+
     \begin{block}{Matrix Element}
         \begin{equation}
             \braket{m}{\dot{n}} = \frac{\bra{m}\dot{\Hhat}\ket{n}}{E_n - E_m} \quad (m \neq n)
