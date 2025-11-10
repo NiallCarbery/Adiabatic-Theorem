@@ -39,6 +39,54 @@
 % Introduction
 \section{Introduction}
 
+\begin{frame}{Historical Context}
+    \begin{columns}
+    \hspace{0.5cm}
+    \column{0.6\textwidth}
+    \begin{block}{Know it alls}
+        \centering
+        
+        Einstein 1911 at Solvay Conference had to deal with cheeky Lorentz questioning the quantum hypothesis $E=nhv$ for atomic oscillators. 
+    \end{block}  
+        \vspace{0.5cm}
+
+        \centering
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.8\textwidth]{figures/ECorrection.png}
+            \caption{1911 Solvay Conference \textit{Windows Paint and Bill Gates}} 
+        \end{figure}
+
+    \column{0.4\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{figures/Solvay_conference.png}
+            \caption{1911 Solvay Conference \textit{Wikimedia Commons}}
+        \end{figure}
+
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Historical Context}
+    \begin{columns}
+    \hspace{0.5cm}
+    \column{0.7\textwidth}
+
+    \begin{block}{Classical Analogy}
+        A pendulum whose length changes slowly will maintain its oscillation mode, but if changed rapidly, it will exhibit chaotic behavior.
+    \end{block}
+
+    \vspace{0.5cm}
+
+    Also called adiabtic invariant, written by Ehrenfest in 1916, and extended to quantum mechanics by Born and Fock in 1928.
+
+    \column{0.3\textwidth}
+
+    \includegraphics[width=0.8\textwidth]{figures/Adiabatic-pendulum.png}
+    \end{columns}
+\end{frame}
+
 \begin{frame}{What is the Adiabatic Theorem?}
     \begin{columns}
     \hspace{0.5cm}
@@ -62,30 +110,6 @@
     \animategraphics[autoplay, loop, width=\textwidth]{20}{figures/frames/slow_adiabatic_potential_animation_}{000}{099}
     \text{Abrupt Change}
     \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_adiabatic/adiabatic_potential_animation_}{000}{083}
-    \end{columns}
-\end{frame}
-
-
-\begin{frame}{Historical Context}
-    \begin{columns}
-    \hspace{0.5cm}
-    \column{0.7\textwidth}
-    \begin{itemize}
-        \item First formulated by Max Born and Vladimir Fock (1928)
-        \item Further developed by Kato (1950)
-        \item Geometric phase discovered by Berry (1984)
-        \item Modern applications in quantum computing and quantum annealing
-    \end{itemize}
-
-    \vspace{0.5cm}
-
-    \begin{block}{Classical Analogy}
-        A pendulum whose length changes slowly will maintain its oscillation mode, but if changed rapidly, it will exhibit chaotic behavior.
-    \end{block}
-
-    \column{0.3\textwidth}
-
-    \includegraphics[width=0.8\textwidth]{figures/Adiabatic-pendulum.png}
     \end{columns}
 \end{frame}
 
@@ -222,8 +246,7 @@
     \begin{equation}
         \bra{m}\dot{\Hhat}\ket{n} + E_m\braket{m}{\dot{n}} = E_n\braket{m}{\dot{n}}
     \end{equation}
-    
-    Therefore:
+
     \begin{block}{Matrix Element}
         \begin{equation}
             \braket{m}{\dot{n}} = \frac{\bra{m}\dot{\Hhat}\ket{n}}{E_n - E_m} \quad (m \neq n)
@@ -330,7 +353,7 @@
 
 % Someone's Slides Placeholder
 \setbeamertemplate{footline}{}
-\begin{frame}{Shane's Slides Placeholder}
+\begin{frame}{Shane's Slides}
     Shane's slides 5 minutes allocated here.
 \end{frame}
 
@@ -338,6 +361,9 @@
 \section{Examples and Applications}
 
 \begin{frame}{Example 1: Spin-1/2 in Rotating Magnetic Field}
+    \begin{columns}
+    \hspace{0.25cm}
+    \column{0.725\textwidth}
     Consider a spin-1/2 particle in a magnetic field that rotates slowly:
     
     \begin{equation}
@@ -358,9 +384,19 @@
         \item The spin remains aligned with $\vec{B}(t)$ (adiabatic following)
         \item After one full rotation ($t = 2\pi/\omega$), acquires Berry phase: $\gamma = \pi(1 - \cos\theta)$
     \end{itemize}
+
+    \column{0.3\textwidth}
+    \centering
+    \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_berry_phase/frame_}{0000}{0119}
+    \end{columns}
+
 \end{frame}
 
 \begin{frame}{Example 2: Two-Level System (Landau-Zener Model)}
+    \begin{columns}
+    \hspace{0.25cm}
+    \column{0.5\textwidth}
+
     Consider the Landau-Zener Hamiltonian:
     \begin{equation}
         \Hhat(t) = -\Delta \sigma_x - \epsilon(t) \sigma_z
@@ -377,7 +413,23 @@
     
     Energy gap at crossing ($\epsilon = 0$): $\Delta E_{\min} = 2\Delta$
     
-    \vspace{0.3cm}
+    \column{0.5\textwidth}
+    \centering
+    \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_lz_no_bloch/frame_}{0000}{0119}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Landau-Zener Model: Avoided Crossing Visualization}
+    \begin{columns}
+    \hspace{0.25cm}
+    \column{0.55\textwidth}
+    
+    \begin{itemize}
+        \item The energy levels exhibit an \textbf{avoided crossing} at $\epsilon(t) = 0$
+        \item Minimum gap: $\Delta E_{\min} = 2\Delta$ determines adiabatic time scale
+    \end{itemize}
+
+    \vspace{0.15cm}
     
     \begin{block}{Adiabatic Condition}
         \begin{equation}
@@ -386,19 +438,10 @@
     \end{block}
     
     This is the canonical model for avoided crossings and adiabatic transitions!
-\end{frame}
-
-\begin{frame}{Landau-Zener Model: Avoided Crossing Visualization}
-    \begin{center}
-        \includegraphics[width=0.55\textwidth]{figures/avoided_crossing.png}
-    \end{center}
-    
-    \vspace{-0.3cm}
-    
-    \begin{itemize}
-        \item The energy levels exhibit an \textbf{avoided crossing} at $\epsilon(t) = 0$
-        \item Minimum gap: $\Delta E_{\min} = 2\Delta$ determines adiabatic time scale
-    \end{itemize}
+    \column{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/avoided_crossing.png}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Discussion: Avoided Crossing Physics}
@@ -1080,19 +1123,19 @@
 %    \textbf{Success Metric:} Time-to-solution (including multiple runs) vs classical methods
 %\end{frame}
 
-\begin{frame}{Parameter Dependence: Effect of Tunneling Amplitude $\Delta$}
-    \begin{center}
-        \includegraphics[width=0.50\textwidth]{figures/delta_comparison.png}
-    \end{center}
-    
-    \vspace{-0.3cm}
-    
-    \begin{itemize}
-        \item \textbf{Larger $\Delta$}: Larger gap $\Rightarrow$ longer time needed for 95\% fidelity
-        \item \textbf{Smaller $\Delta$}: Smaller gap $\Rightarrow$ easier to satisfy adiabatic condition
-        \item Critical time scale: $T_{\text{critical}} \propto 1/\Delta^2$
-    \end{itemize}
-\end{frame}
+%\begin{frame}{Parameter Dependence: Effect of Tunneling Amplitude $\Delta$}
+%    \begin{center}
+%        \includegraphics[width=0.50\textwidth]{figures/delta_comparison.png}
+%    \end{center}
+%    
+%    \vspace{-0.3cm}
+%   
+%    \begin{itemize}
+%        \item \textbf{Larger $\Delta$}: Larger gap $\Rightarrow$ longer time needed for 95\% fidelity
+%        \item \textbf{Smaller $\Delta$}: Smaller gap $\Rightarrow$ easier to satisfy adiabatic condition
+%        \item Critical time scale: $T_{\text{critical}} \propto 1/\Delta^2$
+%    \end{itemize}
+%\end{frame}
 
 %\begin{frame}{Discussion: Scaling and the Adiabatic Theorem}
 %    \begin{block}{Discussion Points}
