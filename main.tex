@@ -625,6 +625,35 @@
     \textbf{Challenge:} Gap can be exponentially small for some problems!
 \end{frame}
 
+\begin{frame}{Adiabatic Theorem in Quantum Annealing}
+    \textbf{Success condition based on adiabatic theorem:}
+    
+    \begin{block}{Required Annealing Time}
+        \begin{equation}
+            T \gg \frac{\hbar}{\Delta_{\min}^2}
+        \end{equation}
+        where $\Delta_{\min}$ is the minimum energy gap during evolution
+    \end{block}
+    
+    \vspace{0.3cm}
+    
+    \textbf{Problem-Dependent Gap:}
+    \begin{itemize}
+        \item Different problems $\Rightarrow$ different gap structures
+        \item Gap often smallest near $t \approx T/2$ (mid-anneal)
+        \item For many NP-hard problems: $\Delta_{\min} \sim e^{-\alpha N}$ (exponentially small!)
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    
+    \textbf{Practical Implications:}
+    \begin{itemize}
+        \item[$+$] Easy problems: Fast annealing possible (microseconds)
+        \item[$-$] Hard problems: May need exponentially long annealing time
+        \item[$\pm$] Thermal effects can help/hinder (quantum vs simulated annealing)
+    \end{itemize}
+\end{frame}
+
 % Section: QUBO and Ising Models
 \section{Quantum Annealing: QUBO and Ising Models}
 
@@ -678,10 +707,10 @@
     
     \vspace{0.3cm}
     
-    \textbf{Quantum Version:}
-    \begin{equation}
-        \hat{H}_{\text{Ising}} = \sum_{i<j} J_{ij} \sigma_i^z \sigma_j^z + \sum_i h_i \sigma_i^z
-    \end{equation}
+    %\textbf{Quantum Version:}
+    %\begin{equation}
+    %    \hat{H}_{\text{Ising}} = \sum_{i<j} J_{ij} \sigma_i^z \sigma_j^z + \sum_i h_i \sigma_i^z
+    %\end{equation}
     
     This is the \textbf{problem Hamiltonian} in quantum annealing!
 \end{frame}
@@ -701,20 +730,20 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Energy Landscape: Solution Distribution}
-    \begin{center}
-        \includegraphics[width=0.45\textwidth]{figures/maxcut_distribution.png}
-    \end{center}
-    
-    \vspace{-0.3cm}
-    
-    \begin{itemize}
-        \item Out of $2^5 = 32$ possible partitions, only 2 achieve the optimal cut size
-        \item Most partitions achieve sub-optimal cuts (sizes 3-4)
-        \item \textbf{Challenge for quantum annealing:} Find the needle in the haystack!
-        \item Energy landscape roughness determines difficulty
-    \end{itemize}
-\end{frame}
+%\begin{frame}{Energy Landscape: Solution Distribution}
+%    \begin{center}
+%        \includegraphics[width=0.45\textwidth]{figures/maxcut_distribution.png}
+%    \end{center}
+%    
+%    \vspace{-0.3cm}
+%    
+%    \begin{itemize}
+%        \item Out of $2^5 = 32$ possible partitions, only 2 achieve the optimal cut size
+%        \item Most partitions achieve sub-optimal cuts (sizes 3-4)
+%        \item \textbf{Challenge for quantum annealing:} Find the needle in the haystack!
+%        \item Energy landscape roughness determines difficulty
+%    \end{itemize}
+%\end{frame}
 
 \begin{frame}{QUBO: Quadratic Unconstrained Binary Optimization}
     \begin{block}{QUBO Formulation}
@@ -775,36 +804,36 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Quantum Annealing Schedule}
-    \textbf{Standard Quantum Annealing Hamiltonian:}
-    
-    \begin{equation}
-        \hat{H}(t) = A(t) \hat{H}_{\text{driver}} + B(t) \hat{H}_{\text{problem}}
-    \end{equation}
-    
-    \vspace{0.3cm}
-    
-    where:
-    \begin{itemize}
-        \item $\hat{H}_{\text{driver}} = -\sum_i \sigma_i^x$ (transverse field - creates superposition)
-        \item $\hat{H}_{\text{problem}} = \sum_{i<j} J_{ij} \sigma_i^z \sigma_j^z + \sum_i h_i \sigma_i^z$ (Ising model)
-        \item $A(t)$, $B(t)$ are annealing schedules with $A(0) \gg B(0)$ and $A(T) \ll B(T)$
-    \end{itemize}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Standard Linear Schedule:}
-    \begin{align}
-        A(t) &= A_0 \left(1 - \frac{t}{T}\right) \\
-        B(t) &= B_0 \frac{t}{T}
-    \end{align}
-    
-    \vspace{0.2cm}
-    
-    At $t=0$: Easy ground state $\ket{+}^{\otimes N}$ (all spins in $+x$ direction)
-    
-    At $t=T$: Ground state encodes solution to optimization problem
-\end{frame}
+%\begin{frame}{Quantum Annealing Schedule}
+%    \textbf{Standard Quantum Annealing Hamiltonian:}
+%    
+%    \begin{equation}
+%        \hat{H}(t) = A(t) \hat{H}_{\text{driver}} + B(t) \hat{H}_{\text{problem}}
+%    \end{equation}
+%    
+%    \vspace{0.3cm}
+%    
+%    where:
+%    \begin{itemize}
+%        \item $\hat{H}_{\text{driver}} = -\sum_i \sigma_i^x$ (transverse field - creates superposition)
+%        \item $\hat{H}_{\text{problem}} = \sum_{i<j} J_{ij} \sigma_i^z \sigma_j^z + \sum_i h_i \sigma_i^z$ (Ising model)
+%        \item $A(t)$, $B(t)$ are annealing schedules with $A(0) \gg B(0)$ and $A(T) \ll B(T)$
+%    \end{itemize}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Standard Linear Schedule:}
+%    \begin{align}
+%        A(t) &= A_0 \left(1 - \frac{t}{T}\right) \\
+%        B(t) &= B_0 \frac{t}{T}
+%    \end{align}
+%    
+%    \vspace{0.2cm}
+%    
+%    At $t=0$: Easy ground state $\ket{+}^{\otimes N}$ (all spins in $+x$ direction)
+%    
+%    At $t=T$: Ground state encodes solution to optimization problem
+%\end{frame}
 
 \begin{frame}{Example: Max-Cut Problem}
     \textbf{Problem:} Given graph $G = (V, E)$, partition vertices into two sets to maximize edges between sets.
@@ -846,8 +875,8 @@
         H_{\text{Ising}} = \sum_{(i,j) \in E} s_i s_j + \text{const}
     \end{equation}
     
-    \vspace{0.2cm}
-    
+    \vspace{0.1cm}
+
     \textbf{Interpretation:}
     \begin{itemize}
         \item $s_i = +1$: vertex in set A
@@ -907,34 +936,55 @@
 %    \end{columns}
 %\end{frame}
 
-\begin{frame}{Adiabatic Theorem in Quantum Annealing}
-    \textbf{Success condition based on adiabatic theorem:}
-    
-    \begin{block}{Required Annealing Time}
-        \begin{equation}
-            T \gg \frac{\hbar}{\Delta_{\min}^2}
-        \end{equation}
-        where $\Delta_{\min}$ is the minimum energy gap during evolution
+%\begin{frame}{Adiabatic Theorem in Quantum Annealing}
+%    \textbf{Success condition based on adiabatic theorem:}
+%    
+%    \begin{block}{Required Annealing Time}
+%        \begin{equation}
+%            T \gg \frac{\hbar}{\Delta_{\min}^2}
+%        \end{equation}
+%        where $\Delta_{\min}$ is the minimum energy gap during evolution
+%    \end{block}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Problem-Dependent Gap:}
+%    \begin{itemize}
+%        \item Different problems $\Rightarrow$ different gap structures
+%        \item Gap often smallest near $t \approx T/2$ (mid-anneal)
+%        \item For many NP-hard problems: $\Delta_{\min} \sim e^{-\alpha N}$ (exponentially small!)
+%    \end{itemize}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Practical Implications:}
+%    \begin{itemize}
+%        \item[$+$] Easy problems: Fast annealing possible (microseconds)
+%        \item[$-$] Hard problems: May need exponentially long annealing time
+%        \item[$\pm$] Thermal effects can help/hinder (quantum vs simulated annealing)
+%    \end{itemize}
+%\end{frame}
+
+\begin{frame}{Born–Oppenheimer Approximation: Adiabatic Physics in Molecules}
+
+    \begin{equation*}
+        \Psi(\mathbf{r}, \mathbf{R}) \approx \psi_e(\mathbf{r}; \mathbf{R})\,\chi(\mathbf{R})
+    \end{equation*}
+
+    \begin{itemize}
+        \item \textbf{Separation of timescales:} Nuclei (heavy) move slowly, electrons adapt instantaneously.  
+        \item The electronic Hamiltonian $H_e(\mathbf{R})$ depends \textit{parametrically} on the nuclear coordinates.  
+        \item By the \textbf{adiabatic theorem}, the electronic state remains in the instantaneous ground state as nuclei evolve slowly.  
+    \end{itemize}
+
+    \begin{block}{Analogy to Adiabatic Quantum Computing}
+    Slow nuclear motion $\leftrightarrow$ slow Hamiltonian evolution.  
+    Electrons follow adiabatically $\leftrightarrow$ qubit states follow instantaneous ground state.  
     \end{block}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Problem-Dependent Gap:}
-    \begin{itemize}
-        \item Different problems $\Rightarrow$ different gap structures
-        \item Gap often smallest near $t \approx T/2$ (mid-anneal)
-        \item For many NP-hard problems: $\Delta_{\min} \sim e^{-\alpha N}$ (exponentially small!)
-    \end{itemize}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Practical Implications:}
-    \begin{itemize}
-        \item[$+$] Easy problems: Fast annealing possible (microseconds)
-        \item[$-$] Hard problems: May need exponentially long annealing time
-        \item[$\pm$] Thermal effects can help/hinder (quantum vs simulated annealing)
-    \end{itemize}
+
 \end{frame}
+
+
 
 \begin{frame}{Discussion: Quantum Annealing vs Gate Model}
     \begin{columns}
@@ -1044,33 +1094,33 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Discussion: Scaling and the Adiabatic Theorem}
-    \begin{block}{Discussion Points}
-        \begin{enumerate}
-            \item Why does larger $\Delta$ require \textit{longer} evolution time?
-            \item How does this relate to the adiabatic condition $T \gg \hbar/\Delta E$?
-            \item What is the trade-off between gap size and computation time?
-        \end{enumerate}
-    \end{block}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Counterintuitive Result:}
-    \begin{itemize}
-        \item Larger gap $\Delta$ = more separation between energy levels
-        \item BUT: Also means stronger coupling between diabatic states
-        \item Stronger coupling $\Rightarrow$ harder to maintain adiabatic evolution
-        \item Mathematical: $|\braket{m}{\dot{n}}| \propto \Delta$ but gap $\propto \Delta$
-    \end{itemize}
-    
-    \vspace{0.3cm}
-    
-    \begin{alertblock}{Key Scaling}
-        Landau-Zener transition probability: $P_{\text{LZ}} = \exp\left(-\frac{\pi\Delta^2}{2\hbar v}\right)$
-        
-        where $v = |\dot{\epsilon}|$ is the sweep rate. Adiabatic limit: $v \to 0 \Rightarrow P_{\text{LZ}} \to 0$
-    \end{alertblock}
-\end{frame}
+%\begin{frame}{Discussion: Scaling and the Adiabatic Theorem}
+%    \begin{block}{Discussion Points}
+%        \begin{enumerate}
+%            \item Why does larger $\Delta$ require \textit{longer} evolution time?
+%            \item How does this relate to the adiabatic condition $T \gg \hbar/\Delta E$?
+%            \item What is the trade-off between gap size and computation time?
+%        \end{enumerate}
+%    \end{block}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Counterintuitive Result:}
+%    \begin{itemize}
+%        \item Larger gap $\Delta$ = more separation between energy levels
+%        \item BUT: Also means stronger coupling between diabatic states
+%        \item Stronger coupling $\Rightarrow$ harder to maintain adiabatic evolution
+%        \item Mathematical: $|\braket{m}{\dot{n}}| \propto \Delta$ but gap $\propto \Delta$
+%    \end{itemize}
+%    
+%    \vspace{0.3cm}
+%    
+%    \begin{alertblock}{Key Scaling}
+%        Landau-Zener transition probability: $P_{\text{LZ}} = \exp\left(-\frac{\pi\Delta^2}{2\hbar v}\right)$
+%        
+%        where $v = |\dot{\epsilon}|$ is the sweep rate. Adiabatic limit: $v \to 0 \Rightarrow P_{\text{LZ}} \to 0$
+%    \end{alertblock}
+%\end{frame}
 
 \begin{frame}{Experimental Realization and Fidelity}
     \begin{columns}
@@ -1117,8 +1167,8 @@
     \textbf{Discussion:} How do environmental effects modify the adiabatic theorem?
 \end{frame}
 
-\begin{frame}{Challenge:} Gap can be exponentially small for some problems!
-\end{frame}
+%\begin{frame}{Challenge:} Gap can be exponentially small for some problems!
+%\end{frame}
 
 
 \begin{frame}{Open Questions and Research Frontiers}
