@@ -172,13 +172,11 @@
         i\hbar \sum_n \left[\dot{c}_n e^{i\theta_n}\ket{n} + c_n i\dot{\theta}_n e^{i\theta_n}\ket{n} + c_n e^{i\theta_n}\ket{\dot{n}}\right] = \sum_n c_n e^{i\theta_n} E_n(t)\ket{n}
     \end{multline}
 
-    where dots denote time derivatives: $\dot{c}_n = \frac{dc_n}{dt}$, $\ket{\dot{n}} = \frac{d}{dt}\ket{n(t)}$.
-
     \vspace{0.3cm}
 
     Dividing by $i\hbar$:
     \begin{equation}
-        \sum_n \left[\frac{\dot{c}_n}{i\hbar} e^{i\theta_n}\ket{n} - c_n\dot{\theta}_n e^{i\theta_n}\ket{n} + \frac{c_n}{i\hbar} e^{i\theta_n}\ket{\dot{n}}\right] = \sum_n c_n e^{i\theta_n} \frac{E_n}{\hbar}\ket{n}
+        \sum_n \left[\frac{\dot{c}_n}{i\hbar} e^{i\theta_n}\ket{n} - \frac{c_n\dot{\theta}_n}{\hbar} e^{i\theta_n}\ket{n} + \frac{c_n}{i\hbar} e^{i\theta_n}\ket{\dot{n}}\right] = \sum_n \frac{c_n E_n}{i\hbar} e^{i\theta_n}\ket{n}
     \end{equation}
 \end{frame}
 
@@ -186,18 +184,18 @@
     Take the inner product with $\bra{m(t)}$:
     
     \begin{equation}
-        \frac{\dot{c}_m}{i\hbar} e^{i\theta_m} - c_m\dot{\theta}_m e^{i\theta_m} + \frac{c_m}{i\hbar} e^{i\theta_m}\braket{m}{\dot{m}} = \sum_{n\neq m} \frac{c_n}{i\hbar} e^{i\theta_n}\braket{m}{\dot{n}}
+        \frac{\dot{c}_m}{i\hbar} e^{i\theta_m} - \frac{c_m\dot{\theta}_m}{\hbar} e^{i\theta_m} + \frac{c_m}{i\hbar} e^{i\theta_m}\braket{m}{\dot{m}} = \frac{c_m E_m}{i\hbar} e^{i\theta_m}
     \end{equation}
 
     \vspace{0.3cm}
     
-    We used orthonormality: $\braket{m}{n} = \delta_{mn}$ and $\sum_{n\neq m}\braket{m}{n} = 0$.
+    We used orthonormality: $\braket{m}{n} = \delta_{mn}$ so that $\bra{m}\Hhat\ket{n} = E_m\delta_{mn}$.
     
     \vspace{0.3cm}
     
-    Rearranging:
+    Multiplying by $i\hbar$ and rearranging:
     \begin{equation}
-        \dot{c}_m e^{i\theta_m} = c_m e^{i\theta_m}\left[\dot{\theta}_m - \frac{E_m}{i\hbar} - \braket{m}{\dot{m}}\right] - \sum_{n\neq m} c_n e^{i\theta_n}\braket{m}{\dot{n}}
+        \dot{c}_m e^{i\theta_m} = c_m e^{i\theta_m}\left[i\hbar\dot{\theta}_m - E_m + i\hbar\braket{m}{\dot{m}}\right] - \sum_{n\neq m} c_n e^{i\theta_n}\braket{m}{\dot{n}}
     \end{equation}
 \end{frame}
 
@@ -225,7 +223,7 @@
     
     \vspace{0.1cm}
     
-    And our equation becomes:
+    Substituting back: $i\hbar\dot{\theta}_m - E_m + i\hbar\braket{m}{\dot{m}} = 0$, so:
     \begin{equation}
         \dot{c}_m e^{i\theta_m} = - \sum_{n\neq m} c_n e^{i\theta_n}\braket{m}{\dot{n}}
     \end{equation}
