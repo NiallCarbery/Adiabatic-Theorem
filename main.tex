@@ -729,9 +729,9 @@
 \end{frame}
 
 \begin{frame}{The Ising Model}
-    \begin{block}{Classical Ising Hamiltonian}
+    \begin{block}{Ising Hamiltonian}
         \begin{equation}
-            H_{\text{Ising}} = \sum_{i<j} J_{ij} s_i s_j + \sum_i h_i s_i
+            \hat{H}_{\text{Ising}} = \sum_{i<j} J_{ij} s_i s_j + \sum_i h_i s_i
         \end{equation}
         where $s_i \in \{-1, +1\}$ are spin variables (Pauli-z eigenvalues)
     \end{block}
@@ -816,36 +816,36 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Converting Between QUBO and Ising}
-    \textbf{The mapping is straightforward:}
-    
-    \begin{block}{QUBO $\rightarrow$ Ising}
-        Variable transformation: $x_i = \frac{1 - s_i}{2}$ where $s_i \in \{-1, +1\}$
-        
-        \vspace{0.2cm}
-        
-        Then: $x_i x_j = \frac{(1-s_i)(1-s_j)}{4} = \frac{1 - s_i - s_j + s_i s_j}{4}$
-    \end{block}
-    
-    \vspace{0.3cm}
-    
-    \begin{block}{Ising $\rightarrow$ QUBO}
-        Inverse transformation: $s_i = 1 - 2x_i$ where $x_i \in \{0, 1\}$
-        
-        \vspace{0.2cm}
-        
-        Then: $s_i s_j = (1-2x_i)(1-2x_j) = 1 - 2x_i - 2x_j + 4x_i x_j$
-    \end{block}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Key Point:} The two formulations are equivalent - choose based on:
-    \begin{itemize}
-        \item Natural problem representation
-        \item Hardware constraints (quantum annealers often use Ising)
-        \item Software/solver availability
-    \end{itemize}
-\end{frame}
+%\begin{frame}{Converting Between QUBO and Ising}
+%    \textbf{The mapping is straightforward:}
+%    
+%    \begin{block}{QUBO $\rightarrow$ Ising}
+%        Variable transformation: $x_i = \frac{1 - s_i}{2}$ where $s_i \in \{-1, +1\}$
+%        
+%        \vspace{0.2cm}
+%        
+%        Then: $x_i x_j = \frac{(1-s_i)(1-s_j)}{4} = \frac{1 - s_i - s_j + s_i s_j}{4}$
+%    \end{block}
+%    
+%    \vspace{0.3cm}
+%    
+%    \begin{block}{Ising $\rightarrow$ QUBO}
+%        Inverse transformation: $s_i = 1 - 2x_i$ where $x_i \in \{0, 1\}$
+%        
+%        \vspace{0.2cm}
+%        
+%        Then: $s_i s_j = (1-2x_i)(1-2x_j) = 1 - 2x_i - 2x_j + 4x_i x_j$
+%    \end{block}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Key Point:} The two formulations are equivalent - choose based on:
+%    \begin{itemize}
+%        \item Natural problem representation
+%        \item Hardware constraints (quantum annealers often use Ising)
+%        \item Software/solver availability
+%    \end{itemize}
+%\end{frame}
 
 %\begin{frame}{Quantum Annealing Schedule}
 %    \textbf{Standard Quantum Annealing Hamiltonian:}
@@ -878,56 +878,56 @@
 %    At $t=T$: Ground state encodes solution to optimization problem
 %\end{frame}
 
-\begin{frame}{Example: Max-Cut Problem}
-    \textbf{Problem:} Given graph $G = (V, E)$, partition vertices into two sets to maximize edges between sets.
-    
-    \vspace{0.3cm}
-    
-    \begin{columns}
-    \column{0.5\textwidth}
-    \textbf{QUBO Formulation:}
-    
-    Maximize:
-    \begin{equation}
-        f(x) = \sum_{(i,j) \in E} (x_i - x_j)^2
-    \end{equation}
-    
-    Expanding:
-    \begin{equation}
-        = \sum_{(i,j) \in E} (x_i + x_j - 2x_i x_j)
-    \end{equation}
-    
-    \vspace{0.2cm}
-    
-    For minimization (quantum annealer):
-    \begin{equation}
-        H_{\text{QUBO}} = -\sum_{(i,j) \in E} (x_i + x_j - 2x_i x_j)
-    \end{equation}
-    
-    \column{0.5\textwidth}
-    \textbf{Ising Formulation:}
-    
-    Using $s_i = 1 - 2x_i$:
-    
-    \begin{equation}
-        H_{\text{Ising}} = -\sum_{(i,j) \in E} (1 - s_i s_j)
-    \end{equation}
-    
-    Simplifies to:
-    \begin{equation}
-        H_{\text{Ising}} = \sum_{(i,j) \in E} s_i s_j + \text{const}
-    \end{equation}
-    
-    \vspace{0.1cm}
-
-    \textbf{Interpretation:}
-    \begin{itemize}
-        \item $s_i = +1$: vertex in set A
-        \item $s_i = -1$: vertex in set B
-        \item Minimize $\Rightarrow$ maximize cut
-    \end{itemize}
-    \end{columns}
-\end{frame}
+%\begin{frame}{Example: Max-Cut Problem}
+%    \textbf{Problem:} Given graph $G = (V, E)$, partition vertices into two sets to maximize edges between sets.
+%    
+%    \vspace{0.3cm}
+%    
+%    \begin{columns}
+%    \column{0.5\textwidth}
+%    \textbf{QUBO Formulation:}
+%    
+%    Maximize:
+%    \begin{equation}
+%        f(x) = \sum_{(i,j) \in E} (x_i - x_j)^2
+%    \end{equation}
+%    
+%    Expanding:
+%    \begin{equation}
+%        = \sum_{(i,j) \in E} (x_i + x_j - 2x_i x_j)
+%    \end{equation}
+%    
+%    \vspace{0.2cm}
+%    
+%    For minimization (quantum annealer):
+%    \begin{equation}
+%       H_{\text{QUBO}} = -\sum_{(i,j) \in E} (x_i + x_j - 2x_i x_j)
+%    \end{equation}
+%    
+%    \column{0.5\textwidth}
+%    \textbf{Ising Formulation:}
+%    
+%    Using $s_i = 1 - 2x_i$:
+%    
+%    \begin{equation}
+%        H_{\text{Ising}} = -\sum_{(i,j) \in E} (1 - s_i s_j)
+%    \end{equation}
+%    
+%    Simplifies to:
+%    \begin{equation}
+%        H_{\text{Ising}} = \sum_{(i,j) \in E} s_i s_j + \text{const}
+%    \end{equation}
+%    
+%    \vspace{0.1cm}
+%
+%    \textbf{Interpretation:}
+%    \begin{itemize}
+%        \item $s_i = +1$: vertex in set A
+%        \item $s_i = -1$: vertex in set B
+%        \item Minimize $\Rightarrow$ maximize cut
+%   \end{itemize}
+%    \end{columns}
+%\end{frame}
 
 %\begin{frame}{Embedding Problems on Quantum Annealers}
 %    \textbf{Hardware Constraints:}
@@ -1008,7 +1008,7 @@
 %    \end{itemize}
 %\end{frame}
 
-\begin{frame}{Born–Oppenheimer Approximation: Adiabatic Physics in Molecules}
+\begin{frame}{Born-Oppenheimer Approximation: Adiabatic Physics in Molecules}
 
     \begin{equation*}
         \Psi(\mathbf{r}, \mathbf{R}) \approx \psi_e(\mathbf{r}; \mathbf{R})\,\chi(\mathbf{R})
@@ -1029,41 +1029,41 @@
 
 
 
-\begin{frame}{Discussion: Quantum Annealing vs Gate Model}
-    \begin{columns}
-    \column{0.5\textwidth}
-    \textbf{Quantum Annealing:}
-    \begin{itemize}
-        \item[$+$] Analog, continuous evolution
-        \item[$+$] Natural for optimization
-        \item[$+$] Potentially more robust to some errors
-        \item[$+$] Easier to scale (1000s of qubits)
-        \item[$-$] Limited to specific problem types
-        \item[$-$] No quantum error correction
-        \item[$-$] Success depends on gap structure
-    \end{itemize}
-    
-    \column{0.5\textwidth}
-    \textbf{Gate-Based Quantum Computing:}
-    \begin{itemize}
-        \item[$+$] Universal quantum computation
-        \item[$+$] Quantum error correction possible
-        \item[$+$] Well-defined circuit depth
-        \item[$+$] Can implement any algorithm
-        \item[$-$] Currently limited qubits ($<$1000)
-        \item[$-$] High gate error rates
-        \item[$-$] Requires precise control
-    \end{itemize}
-    \end{columns}
-    
-    \vspace{0.5cm}
-    
-    \begin{alertblock}{Open Question}
-        Does quantum annealing provide speedup over classical algorithms?
-        
-        Evidence mixed - depends on problem structure, noise, and implementation.
-    \end{alertblock}
-\end{frame}
+%\begin{frame}{Discussion: Quantum Annealing vs Gate Model}
+%    \begin{columns}
+%    \column{0.5\textwidth}
+%    \textbf{Quantum Annealing:}
+%    \begin{itemize}
+%        \item[$+$] Analog, continuous evolution
+%        \item[$+$] Natural for optimization
+%        \item[$+$] Potentially more robust to some errors
+%        \item[$+$] Easier to scale (1000s of qubits)
+%        \item[$-$] Limited to specific problem types
+%        \item[$-$] No quantum error correction
+%        \item[$-$] Success depends on gap structure
+%    \end{itemize}
+%    
+%    \column{0.5\textwidth}
+%    \textbf{Gate-Based Quantum Computing:}
+%    \begin{itemize}
+%        \item[$+$] Universal quantum computation
+%        \item[$+$] Quantum error correction possible
+%        \item[$+$] Well-defined circuit depth
+%        \item[$+$] Can implement any algorithm
+%        \item[$-$] Currently limited qubits ($<$1000)
+%        \item[$-$] High gate error rates
+%        \item[$-$] Requires precise control
+%    \end{itemize}
+%    \end{columns}
+%   
+%    \vspace{0.5cm}
+%    
+%    \begin{alertblock}{Open Question}
+%        Does quantum annealing provide speedup over classical algorithms?
+%        
+%        Evidence mixed - depends on problem structure, noise, and implementation.
+%    \end{alertblock}
+%\end{frame}
 
 %\begin{frame}{Practical Example: Number Partitioning}
 %    \textbf{Problem:} Given numbers $\{a_1, a_2, \ldots, a_N\}$, partition into two sets with equal sums.
@@ -1165,89 +1165,89 @@
 %    \end{alertblock}
 %\end{frame}
 
-\begin{frame}{Experimental Realization and Fidelity}
-    \begin{columns}
-    \column{0.5\textwidth}
-    \textbf{Experimental Platforms:}
-    \begin{itemize}
-        \item Superconducting qubits
-        \item Trapped ions
-        \item Cold atoms
-        \item Nitrogen-vacancy centers
-        \item Quantum dots
-    \end{itemize}
-    
-    \vspace{0.5cm}
-    
-    \textbf{Typical Parameters:}
-    \begin{itemize}
-        \item $\Delta/h \sim$ 0.1-10 GHz
-        \item $T \sim$ 1-1000 ns
-        \item Fidelity $>$ 99\% achievable
-    \end{itemize}
-    
-    \column{0.5\textwidth}
-    \textbf{Challenges:}
-    \begin{itemize}
-        \item Decoherence ($T_1, T_2$)
-        \item Control noise
-        \item Calibration errors
-        \item Finite temperature
-    \end{itemize}
-    
-    \vspace{0.5cm}
-    
-    \begin{block}{Fidelity Metric}
-        \begin{equation}
-            F = |\braket{\psi_{\text{target}}}{\psi_{\text{final}}}|^2
-        \end{equation}
-        Measures overlap with desired state
-    \end{block}
-    \end{columns}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Discussion:} How do environmental effects modify the adiabatic theorem?
-\end{frame}
+%\begin{frame}{Experimental Realization and Fidelity}
+%    \begin{columns}
+%    \column{0.5\textwidth}
+%    \textbf{Experimental Platforms:}
+%    \begin{itemize}
+%        \item Superconducting qubits
+%        \item Trapped ions
+%        \item Cold atoms
+%        \item Nitrogen-vacancy centers
+%        \item Quantum dots
+%    \end{itemize}
+%    
+%    \vspace{0.5cm}
+%    
+%    \textbf{Typical Parameters:}
+%    \begin{itemize}
+%        \item $\Delta/h \sim$ 0.1-10 GHz
+%        \item $T \sim$ 1-1000 ns
+%        \item Fidelity $>$ 99\% achievable
+%    \end{itemize}
+%    
+%    \column{0.5\textwidth}
+%    \textbf{Challenges:}
+%    \begin{itemize}
+%        \item Decoherence ($T_1, T_2$)
+%        \item Control noise
+%        \item Calibration errors
+%        \item Finite temperature
+%    \end{itemize}
+%    
+%    \vspace{0.5cm}
+%    
+%    \begin{block}{Fidelity Metric}
+%       \begin{equation}
+%            F = |\braket{\psi_{\text{target}}}{\psi_{\text{final}}}|^2
+%        \end{equation}
+%        Measures overlap with desired state
+%    \end{block}
+%    \end{columns}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Discussion:} How do environmental effects modify the adiabatic theorem?
+%\end{frame}
 
 %\begin{frame}{Challenge:} Gap can be exponentially small for some problems!
 %\end{frame}
 
 
-\begin{frame}{Open Questions and Research Frontiers}
-    \begin{enumerate}
-        \item \textbf{Many-body systems:} How does the adiabatic theorem scale with system size?
-        \begin{itemize}
-            \item Ground state degeneracy
-            \item Exponentially small gaps
-            \item Quantum phase transitions
-        \end{itemize}
-        
-        \item \textbf{Decoherence:} How does noise affect adiabatic evolution?
-        \begin{itemize}
-            \item Open quantum systems
-            \item Markovian vs non-Markovian dynamics
-            \item Error correction strategies
-        \end{itemize}
-        
-        \item \textbf{Shortcuts to adiabaticity:} Can we achieve adiabatic-like results faster?
-        \begin{itemize}
-            \item Counter-diabatic driving
-            \item Optimal control theory
-            \item Fast-forward protocols
-        \end{itemize}
-        
-        \item \textbf{Quantum annealing:} What problems can quantum annealers solve?
-        \begin{itemize}
-            \item Quantum advantage vs classical algorithms
-            \item Role of thermal fluctuations
-            \item Embedding optimization problems
-        \end{itemize}
-    \end{enumerate}
-\end{frame}
+%\begin{frame}{Open Questions and Research Frontiers}
+%    \begin{enumerate}
+%        \item \textbf{Many-body systems:} How does the adiabatic theorem scale with system size?
+%        \begin{itemize}
+%            \item Ground state degeneracy
+%            \item Exponentially small gaps
+%            \item Quantum phase transitions
+%        \end{itemize}
+%        
+%        \item \textbf{Decoherence:} How does noise affect adiabatic evolution?
+%        \begin{itemize}
+%            \item Open quantum systems
+%            \item Markovian vs non-Markovian dynamics
+%            \item Error correction strategies
+%        \end{itemize}
+%        
+%        \item \textbf{Shortcuts to adiabaticity:} Can we achieve adiabatic-like results faster?
+%        \begin{itemize}
+%            \item Counter-diabatic driving
+%            \item Optimal control theory
+%            \item Fast-forward protocols
+%        \end{itemize}
+%        
+%        \item \textbf{Quantum annealing:} What problems can quantum annealers solve?
+%        \begin{itemize}
+%            \item Quantum advantage vs classical algorithms
+%            \item Role of thermal fluctuations
+%            \item Embedding optimization problems
+%        \end{itemize}
+%    \end{enumerate}
+%\end{frame}
 
 % Section 8: Conclusion
-\section{Conclusion}
+%\section{Conclusion}
 
 %\begin{frame}{Summary}
 %    \begin{enumerate}
@@ -1265,97 +1265,97 @@
 %    \end{enumerate}
 %\end{frame}
 
-\begin{frame}{Key Insights}
-    \begin{block}{Mathematical Rigor}
-        The adiabatic theorem is not just a hand-waving argument:
-        \begin{itemize}
-            \item Precise conditions on energy gaps and rates of change
-            \item Systematic perturbation theory for corrections
-            \item Geometric interpretation via Berry connection and curvature
-        \end{itemize}
-    \end{block}
-    
-    \vspace{0.3cm}
-    
-    \begin{block}{Physical Consequences}
-        \begin{itemize}
-            \item Quantum systems can "remember" their path through parameter space
-            \item Topological effects in quantum mechanics
-            \item Foundation for quantum computation paradigm
-            \item Explains robustness of certain quantum states
-        \end{itemize}
-    \end{block}
-\end{frame}
+%\begin{frame}{Key Insights}
+%    \begin{block}{Mathematical Rigor}
+%        The adiabatic theorem is not just a hand-waving argument:
+%        \begin{itemize}
+%            \item Precise conditions on energy gaps and rates of change
+%            \item Systematic perturbation theory for corrections
+%            \item Geometric interpretation via Berry connection and curvature
+%        \end{itemize}
+%    \end{block}
+%    
+%    \vspace{0.3cm}
+%    
+%    \begin{block}{Physical Consequences}
+%        \begin{itemize}
+%            \item Quantum systems can "remember" their path through parameter space
+%            \item Topological effects in quantum mechanics
+%            \item Foundation for quantum computation paradigm
+%            \item Explains robustness of certain quantum states
+%        \end{itemize}
+%    \end{block}
+%\end{frame}
 
 
-\begin{frame}{Numerical Verification: What We Observed}
-    \textbf{From our Landau-Zener simulations:}
-    
-    \begin{enumerate}
-        \item \textbf{Critical Time Scale:} For $\Delta = 1.0$, achieve 95\% fidelity at $T \approx 10\hbar$
-        \begin{itemize}
-            \item Consistent with $T \gg \hbar/(2\Delta) = 0.5\hbar$
-        \end{itemize}
-        
-        \item \textbf{Scaling with $\Delta$:} 
-        \begin{itemize}
-            \item $\Delta = 0.5$: $T_{95\%} \approx 3\hbar$ (easier)
-            \item $\Delta = 1.0$: $T_{95\%} \approx 10\hbar$ (baseline)
-            \item $\Delta = 2.0$: $T_{95\%} \approx 30\hbar$ (harder)
-            \item Approximately: $T_{95\%} \propto \Delta^2$
-        \end{itemize}
-        
-        \item \textbf{Non-adiabatic regime:} For $T < 1\hbar$, fidelity drops dramatically
-        \begin{itemize}
-            \item Landau-Zener transitions dominate
-            \item Exponential suppression with $T$
-        \end{itemize}
-    \end{enumerate}
-    
-    \vspace{0.3cm}
-    
-    \begin{alertblock}{Key Takeaway}
-        The adiabatic theorem is not just qualitative - it provides quantitative predictions that match numerical simulations!
-    \end{alertblock}
-\end{frame}
+%\begin{frame}{Numerical Verification: What We Observed}
+%    \textbf{From our Landau-Zener simulations:}
+%    
+%    \begin{enumerate}
+%        \item \textbf{Critical Time Scale:} For $\Delta = 1.0$, achieve 95\% fidelity at $T \approx 10\hbar$
+%        \begin{itemize}
+%            \item Consistent with $T \gg \hbar/(2\Delta) = 0.5\hbar$
+%        \end{itemize}
+%        
+%        \item \textbf{Scaling with $\Delta$:} 
+%        \begin{itemize}
+%            \item $\Delta = 0.5$: $T_{95\%} \approx 3\hbar$ (easier)
+%            \item $\Delta = 1.0$: $T_{95\%} \approx 10\hbar$ (baseline)
+%            \item $\Delta = 2.0$: $T_{95\%} \approx 30\hbar$ (harder)
+%            \item Approximately: $T_{95\%} \propto \Delta^2$
+%        \end{itemize}
+%        
+%        \item \textbf{Non-adiabatic regime:} For $T < 1\hbar$, fidelity drops dramatically
+%        \begin{itemize}
+%            \item Landau-Zener transitions dominate
+%            \item Exponential suppression with $T$
+%        \end{itemize}
+%    \end{enumerate}
+%    
+%    \vspace{0.3cm}
+%    
+%    \begin{alertblock}{Key Takeaway}
+%        The adiabatic theorem is not just qualitative - it provides quantitative predictions that match numerical simulations!
+%    \end{alertblock}
+%\end{frame}
 
-\begin{frame}{Discussion: Practical Implications}
-    \begin{block}{Questions for Consideration}
-        \begin{enumerate}
-            \item For quantum computing, is longer evolution time always acceptable?
-            \item How do we balance fidelity vs speed in real applications?
-            \item What role does the adiabatic theorem play in current quantum technologies?
-        \end{enumerate}
-    \end{block}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Real-World Trade-offs:}
-    
-    \begin{columns}
-    \column{0.5\textwidth}
-    \textbf{Slower Evolution:}
-    \begin{itemize}
-        \item[$+$] Higher fidelity
-        \item[$+$] Better adiabaticity
-        \item[$-$] More decoherence
-        \item[$-$] Longer computation time
-    \end{itemize}
-    
-    \column{0.5\textwidth}
-    \textbf{Faster Evolution:}
-    \begin{itemize}
-        \item[$+$] Less decoherence
-        \item[$+$] Faster results
-        \item[$-$] Lower fidelity
-        \item[$-$] Non-adiabatic errors
-    \end{itemize}
-    \end{columns}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Optimal Strategy:} Find the "sweet spot" where $T$ is long enough for adiabaticity but short enough to avoid decoherence. This is an active area of research!
-\end{frame}
+%\begin{frame}{Discussion: Practical Implications}
+%    \begin{block}{Questions for Consideration}
+%        \begin{enumerate}
+%            \item For quantum computing, is longer evolution time always acceptable?
+%            \item How do we balance fidelity vs speed in real applications?
+%            \item What role does the adiabatic theorem play in current quantum technologies?
+%        \end{enumerate}
+%    \end{block}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Real-World Trade-offs:}
+%    
+%    \begin{columns}
+%    \column{0.5\textwidth}
+%    \textbf{Slower Evolution:}
+%    \begin{itemize}
+%        \item[$+$] Higher fidelity
+%        \item[$+$] Better adiabaticity
+%        \item[$-$] More decoherence
+%        \item[$-$] Longer computation time
+%    \end{itemize}
+%    
+%    \column{0.5\textwidth}
+%    \textbf{Faster Evolution:}
+%    \begin{itemize}
+%        \item[$+$] Less decoherence
+%        \item[$+$] Faster results
+%        \item[$-$] Lower fidelity
+%        \item[$-$] Non-adiabatic errors
+%    \end{itemize}
+%    \end{columns}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Optimal Strategy:} Find the "sweet spot" where $T$ is long enough for adiabaticity but short enough to avoid decoherence. This is an active area of research!
+%\end{frame}
 
 \begin{frame}
     \centering
