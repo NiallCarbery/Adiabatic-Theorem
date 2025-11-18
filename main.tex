@@ -10,6 +10,7 @@
 \usepackage{bm}
 \usepackage{hyperref}
 \usepackage{animate}
+\usepackage[font=tiny]{caption}
 
 % Title Information
 \title[Adiabatic Theorem]{Adiabatic Theorem and Quantum Annealing}
@@ -43,10 +44,10 @@
     \begin{columns}
     \hspace{0.5cm}
     \column{0.6\textwidth}
-    \begin{block}{Know it alls}
+    \begin{block}{The beginning of quantum theory}
         \centering
         
-        Einstein 1911 at Solvay Conference had to deal with cheeky Lorentz questioning the quantum hypothesis $E=nhv$ for atomic oscillators. 
+        Einstein 1911 gave Solvay Conference on quantum hypothesis $E=nhv$ for atomic oscillators. 
     \end{block}  
         \vspace{0.5cm}
 
@@ -54,14 +55,14 @@
         \begin{figure}
             \centering
             \includegraphics[width=0.8\textwidth]{figures/ECorrection.png}
-            \caption{1911 Solvay Conference \textit{Windows Paint and Bill Gates}} 
+            \caption{\tiny{Einstein Lorentz Debate Catoon \textit{Vecteezy}}} 
         \end{figure}
 
     \column{0.4\textwidth}
         \begin{figure}
             \centering
             \includegraphics[width=\textwidth]{figures/Solvay_conference.png}
-            \caption{1911 Solvay Conference \textit{Wikimedia Commons}}
+            \caption{\tiny{1911 Solvay Conference \textit{Wikimedia Commons}}}
         \end{figure}
 
     \end{columns}
@@ -82,8 +83,11 @@
     Also called adiabtic invariant, written by Ehrenfest in 1916, and extended to quantum mechanics by Born and Fock in 1928.
 
     \column{0.3\textwidth}
-
-    \includegraphics[width=0.8\textwidth]{figures/Adiabatic-pendulum.png}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figures/Adiabatic-pendulum.png}
+        \caption{\tiny Pendulum with Varying Length \textit{Wikimedia Commons}}
+    \end{figure}
     \end{columns}
 \end{frame}
 
@@ -106,10 +110,16 @@
     
     \column{0.4\textwidth}
     \centering
-    \text{Slow Change}
-    \animategraphics[autoplay, loop, width=\textwidth]{20}{figures/frames/slow_adiabatic_potential_animation_}{000}{099}
-    \text{Abrupt Change}
-    \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_adiabatic/adiabatic_potential_animation_}{000}{083}
+    \begin{figure}
+        \centering
+        \animategraphics[autoplay, loop, width=\textwidth]{20}{figures/frames/slow_adiabatic_potential_animation_}{000}{099}
+        \caption{\tiny Slow change (animated)}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_adiabatic/adiabatic_potential_animation_}{000}{083}
+        \caption{\tiny Abrupt change (animated)}
+    \end{figure}
     \end{columns}
 \end{frame}
 
@@ -232,7 +242,7 @@
         \begin{figure}
             \centering
             \includegraphics[width=\textwidth]{figures/BerryBoy.jpg}
-            \caption{Michael Berry (The man himself) \textit{Wikimedia Commons}}
+            \caption{\tiny Michael Berry \textit{Wikimedia Commons}}
         \end{figure}
     \end{columns}
 \end{frame}
@@ -263,29 +273,29 @@
     \end{block}
 \end{frame}
 
-\begin{frame}{The Differential Equation for Coefficients}
-    Substituting back:
-    
-    \begin{equation}
-        \dot{c}_m = - \sum_{n\neq m} c_n e^{i(\theta_n - \theta_m)} \frac{\bra{m}\dot{\Hhat}\ket{n}}{E_n - E_m}
-    \end{equation}
-    
-    The phase difference is:
-    \begin{equation}
-        \theta_n - \theta_m = -\frac{1}{\hbar}\int_0^t [E_n(t') - E_m(t')]dt' + [\gamma_n(t) - \gamma_m(t)]
-    \end{equation}
-    
-    \vspace{0.3cm}
-    
-    \begin{alertblock}{Key Observation}
-        The right-hand side contains:
-        \begin{itemize}
-            \item $\dot{\Hhat}$ - rate of change of Hamiltonian
-            \item $E_n - E_m$ - energy gap (in denominator)
-            \item Rapidly oscillating phase factor
-        \end{itemize}
-    \end{alertblock}
-\end{frame}
+%\begin{frame}{The Differential Equation for Coefficients}
+%    Substituting back:
+%    
+%    \begin{equation}
+%        \dot{c}_m = - \sum_{n\neq m} c_n e^{i(\theta_n - \theta_m)} \frac{\bra{m}\dot{\Hhat}\ket{n}}{E_n - E_m}
+%    \end{equation}
+%    
+%    The phase difference is:
+%    \begin{equation}
+%        \theta_n - \theta_m = -\frac{1}{\hbar}\int_0^t [E_n(t') - E_m(t')]dt' + [\gamma_n(t) - \gamma_m(t)]
+%    \end{equation}
+%    
+%    \vspace{0.3cm}
+%    
+%    \begin{alertblock}{Key Observation}
+%        The right-hand side contains:
+%        \begin{itemize}
+%            \item $\dot{\Hhat}$ - rate of change of Hamiltonian
+%            \item $E_n - E_m$ - energy gap (in denominator)
+%            \item Rapidly oscillating phase factor
+%        \end{itemize}
+%    \end{alertblock}
+%\end{frame}
 
 \begin{frame}{The Adiabatic Condition}
     For the system to remain in state $\ket{m}$, we need $\dot{c}_m \approx 0$ for $m$ equal to the initial state.
@@ -360,12 +370,6 @@
 %    where $R$ represents the parameters in $\Hhat(R)$.
 %\end{frame}
 
-% Someone's Slides Placeholder
-\setbeamertemplate{footline}{}
-\begin{frame}{Shane's Slides}
-    Shane's slides 5 minutes allocated here.
-\end{frame}
-
 % Examples and Applications
 \section{Examples and Applications}
 
@@ -396,7 +400,11 @@
 
     \column{0.3\textwidth}
     \centering
-    \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_berry_phase/frame_}{0000}{0119}
+    \begin{figure}
+        \centering
+        \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_berry_phase/frame_}{0000}{0119}
+        \caption{\tiny Berry phase evolution (animated)}
+    \end{figure}
     \end{columns}
 
 \end{frame}
@@ -424,60 +432,67 @@
     
     \column{0.5\textwidth}
     \centering
-    \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_lz_no_bloch/frame_}{0000}{0119}
+    \begin{figure}
+        \centering
+        \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_lz_no_bloch/frame_}{0000}{0119}
+        \caption{\tiny Landau--Zener dynamics (animated)}
+    \end{figure}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Landau-Zener Model: Avoided Crossing Visualization}
-    \begin{columns}
-    \hspace{0.25cm}
-    \column{0.55\textwidth}
-    
-    \begin{itemize}
-        \item The energy levels exhibit an \textbf{avoided crossing} at $\epsilon(t) = 0$
-        \item Minimum gap: $\Delta E_{\min} = 2\Delta$ determines adiabatic time scale
-    \end{itemize}
-
-    \vspace{0.15cm}
-    
-    \begin{block}{Adiabatic Condition}
-        \begin{equation}
-            T \gg \frac{\hbar}{\Delta E_{\min}} = \frac{\hbar}{2\Delta} \quad \text{and} \quad \left|\dot{\epsilon}\right| \ll \frac{4\Delta^2}{\hbar}
-        \end{equation}
-    \end{block}
-    
-    This is the canonical model for avoided crossings and adiabatic transitions!
-    \column{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/avoided_crossing.png}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{Discussion: Avoided Crossing Physics}
-    \begin{block}{Key Questions}
-        \begin{enumerate}
-            \item What happens at the avoided crossing point?
-            \item Why is this the bottleneck for adiabatic evolution?
-            \item How does the gap size affect the required evolution time?
-        \end{enumerate}
-    \end{block}
-    
-    \vspace{0.3cm}
-    
-    \textbf{Physical Insights:}
-    \begin{itemize}
-        \item At $\epsilon = 0$: The eigenstates are equal superpositions of diabatic states
-        \item The gap $2\Delta$ prevents level crossing (quantum mechanical effect)
-        \item Smaller gap $\Rightarrow$ easier to violate adiabaticity
-        \item Without the $-\Delta\sigma_x$ term, levels would cross diabatically
-    \end{itemize}
-    
-    \vspace{0.3cm}
-    
-    \begin{alertblock}{Critical Insight}
-        The adiabatic condition is hardest to satisfy near the \textbf{minimum gap}. This is where non-adiabatic transitions (Landau-Zener tunneling) are most likely to occur.
-    \end{alertblock}
-\end{frame}
+%\begin{frame}{Landau-Zener Model}
+%    \begin{columns}
+%    \hspace{0.25cm}
+%    \column{0.55\textwidth}
+%    
+%    \begin{itemize}
+%        \item The energy levels exhibit an \textbf{avoided crossing} at $\epsilon(t) = 0$
+%        \item Minimum gap: $\Delta E_{\min} = 2\Delta$ determines adiabatic time scale
+%    \end{itemize}
+%
+%    \vspace{0.15cm}
+%    
+%    \begin{block}{Adiabatic Condition}
+%        \begin{equation}
+%            T \gg \frac{\hbar}{\Delta E_{\min}} = \frac{\hbar}{2\Delta} \quad \text{and} \quad \left|\dot{\epsilon}\right| \ll \frac{4\Delta^2}{\hbar}
+%        \end{equation}
+%    \end{block}
+%    
+%    This is the canonical model for avoided crossings and adiabatic transitions!
+%    \column{0.45\textwidth}
+%    \centering
+%    \begin{figure}
+%        \centering
+%        \includegraphics[width=\textwidth]{figures/avoided_crossing.png}
+%        \caption{\tiny Avoided crossing energy levels}
+%    \end{figure}
+%    \end{columns}
+%\end{frame}
+%\begin{frame}{Discussion: Avoided Crossing Physics}
+%    \begin{block}{Key Questions}
+%        \begin{enumerate}
+%            \item What happens at the avoided crossing point?
+%            \item Why is this the bottleneck for adiabatic evolution?
+%            \item How does the gap size affect the required evolution time?
+%        \end{enumerate}%
+%    \end{block}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{Physical Insights:}
+%    \begin{itemize}
+%        \item At $\epsilon = 0$: The eigenstates are equal superpositions of diabatic states
+%        \item The gap $2\Delta$ prevents level crossing (quantum mechanical effect)
+%        \item Smaller gap $\Rightarrow$ easier to violate adiabaticity
+%        \item Without the $-\Delta\sigma_x$ term, levels would cross diabatically
+%    \end{itemize}
+%    
+%    \vspace{0.3cm}
+%    
+%    \begin{alertblock}{Critical Insight}
+%        The adiabatic condition is hardest to satisfy near the \textbf{minimum gap}. This is where non-adiabatic transitions (Landau-Zener tunneling) are most likely to occur.
+%    \end{alertblock}
+%\end{frame}
 
 
 % Section 6: Geometric Phase
@@ -605,59 +620,59 @@
     Leads to non-Abelian geometric phases (important in topological quantum computation).
 \end{frame}
 
-\begin{frame}{Discussion: Diabatic vs Adiabatic Evolution}
-    \begin{columns}
-    \column{0.5\textwidth}
-    \textbf{Diabatic Evolution:}
-    \begin{itemize}
-        \item Fast changes in $\Hhat(t)$
-        \item System doesn't track instantaneous eigenstates
-        \item Transitions between levels
-        \item Example: Sudden approximation
-    \end{itemize}
+%\begin{frame}{Discussion: Diabatic vs Adiabatic Evolution}
+%    \begin{columns}
+%    \column{0.5\textwidth}
+%    \textbf{Diabatic Evolution:}
+%    \begin{itemize}
+%        \item Fast changes in $\Hhat(t)$
+%        \item System doesn't track instantaneous eigenstates
+%        \item Transitions between levels
+%        \item Example: Sudden approximation
+%    \end{itemize}
+%    
+%    \vspace{0.3cm}
+%    
+%    \textbf{When applicable:}
+%    \begin{equation}
+%        T \ll \frac{\hbar}{\Delta E}
+%    \end{equation}
     
-    \vspace{0.3cm}
+%    \column{0.5\textwidth}
+%    \textbf{Adiabatic Evolution:}
+%    \begin{itemize}
+%        \item Slow changes in $\Hhat(t)$
+%        \item System follows instantaneous eigenstate
+%        \item No transitions (to first order)
+%        \item Example: Born-Oppenheimer
+%    \end{itemize}
     
-    \textbf{When applicable:}
-    \begin{equation}
-        T \ll \frac{\hbar}{\Delta E}
-    \end{equation}
+%    \vspace{0.3cm}
     
-    \column{0.5\textwidth}
-    \textbf{Adiabatic Evolution:}
-    \begin{itemize}
-        \item Slow changes in $\Hhat(t)$
-        \item System follows instantaneous eigenstate
-        \item No transitions (to first order)
-        \item Example: Born-Oppenheimer
-    \end{itemize}
+%    \textbf{When applicable:}
+%    \begin{equation}
+%        T \gg \frac{\hbar}{\Delta E}
+%    \end{equation}
+%    \end{columns}
     
-    \vspace{0.3cm}
+%    \vspace{0.5cm}
     
-    \textbf{When applicable:}
-    \begin{equation}
-        T \gg \frac{\hbar}{\Delta E}
-    \end{equation}
-    \end{columns}
-    
-    \vspace{0.5cm}
-    
-    \begin{block}{Discussion Question}
-        In between these limits, how do we calculate the transition probability? 
+%    \begin{block}{Discussion Question}
+%        In between these limits, how do we calculate the transition probability? 
         
-        \textbf{Answer:} Landau-Zener formula, perturbation theory, or numerical methods
-    \end{block}
-\end{frame}
+%        \textbf{Answer:} Landau-Zener formula, perturbation theory, or numerical methods
+%    \end{block}
+%\end{frame}
 
 
 
 % New Section
-\setbeamertemplate{footline}{}
-\begin{frame}{Fintan's Slides Placeholder}
-    Fintan's slides 5 minutes allocated here.
-\end{frame}
-
 \begin{frame}{Application: Adiabatic Quantum Computation}
+
+    \begin{equation}
+        \Hhat(t) = (1-s(t))\Hhat_{\text{initial}} + s(t)\Hhat_{\text{problem}}
+    \end{equation}
+
     \begin{block}{Basic Idea}
         \begin{enumerate}
             \item Encode problem in Hamiltonian $\Hhat_{\text{problem}}$ whose ground state is the solution
@@ -768,9 +783,11 @@
 \end{frame}
 
 \begin{frame}{Visualizing the Ising Model: Max-Cut Example}
-    \begin{center}
+    \begin{figure}
+        \centering
         \includegraphics[width=0.75\textwidth]{figures/maxcut_example.png}
-    \end{center}
+        \caption{\tiny Max-Cut example graph (problem instance)}
+    \end{figure}
     
     \vspace{-0.3cm}
     
@@ -1377,6 +1394,36 @@
 
 % Appendix
 \appendix
+
+\begin{frame}{Appendix: Why instantaneous eigenstates are not TDSE solutions}
+    Suppose the instantaneous eigenproblem holds:
+    \begin{equation}
+        \Hhat(t)\ket{n(t)} = E_n(t)\ket{n(t)}.
+    \end{equation}
+
+    Ask whether $\ket{\psi(t)} = e^{i\theta(t)}\ket{n(t)}$ can satisfy the time-dependent Schr\"odinger equation
+    \begin{equation}
+        i\hbar\frac{d}{dt}\ket{\psi(t)} = \Hhat(t)\ket{\psi(t)}.
+    \end{equation}
+
+    Plugging in gives:
+    \begin{equation}
+        i\hbar\left(\dot{\theta}\ket{n} + \ket{\dot{n}}\right) = E_n\ket{n}.
+    \end{equation}
+
+    Project onto an orthogonal eigenstate $\bra{m(t)}$ with $m\neq n$ to obtain the consistency condition:
+    \begin{equation}
+        i\hbar\braket{m}{\dot{n}} = 0 \quad (m\neq n).
+    \end{equation}
+
+    But differentiating the eigenvalue equation and projecting onto $\bra{m}$ yields
+    \begin{equation}
+        \braket{m}{\dot{n}} = \frac{\bra{m}\dot{\Hhat}\ket{n}}{E_n - E_m} \quad (m\neq n),
+    \end{equation}
+    which is generally nonzero when $\dot{\Hhat}\neq 0$.
+
+    Therefore the requirement $\braket{m}{\dot{n}}=0$ fails in general, so the instantaneous eigenstate (up to a phase) is not a solution of the full time-dependent Schr\"odinger equation unless $\dot{\Hhat}=0$ or special additional conditions hold.
+\end{frame}
 
 \begin{frame}{Appendix: Proof of $\braket{n}{\dot{n}}$ is Purely Imaginary}
     From normalization: $\braket{n}{n} = 1$
