@@ -13,6 +13,33 @@
 *.fls
 *.synctex.gz
 *.xdv
-.pdf
-*.synctex(busy)
+# LaTeX intermediate and output files
+# Common aux/build files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.out
+*.gz
+*.snm
+*.toc
+*.nav
+*.log
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.xdv
+
+# Ignore generated PDFs
+*.pdf
+
+# Biber/BCF files and related LaTeX helpers
+*.bcf
+*.run.xml
+
+# Notebook outputs
 *.ipynb
+
+# Figures/frames (optional)
+figures/frames/
+figures/frames_*/*
