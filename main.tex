@@ -14,11 +14,15 @@
 \usepackage[backend=biber, style=numeric]{biblatex}
 \addbibresource{references.bib}
 
+% new: better typesetting & cleaner slides
+\usepackage{microtype}
+\setbeamertemplate{navigation symbols}{} % remove nav symbols
+
+
 % Title Information
 \title[Adiabatic Theorem]{Adiabatic Theorem and Quantum Annealing}
 \subtitle{A Mathematically Rigorous Treatment}
 \author{Niall, Fintan, Shane}
-\date{\today}
 \institute{Applied Quantum Mechanics}
 \titlegraphic{\includegraphics[width=2cm]{figures/uni.png}}
 
@@ -35,9 +39,9 @@
 \end{frame}
 
 % Table of Contents
-\begin{frame}{Outline}
-    \tableofcontents
-\end{frame}
+%\begin{frame}{Outline}
+%    \tableofcontents
+%\end{frame}
 
 % Introduction
 \section{Introduction}
@@ -82,7 +86,13 @@
 
     \vspace{0.5cm}
 
-    Also called adiabtic invariant, written by Ehrenfest in 1916 \cite{Ehrenfest1916}, and extended to quantum mechanics by Born and Fock in 1928 \cite{Born1928}.
+    Also called adiabtic invariant, written by Ehrenfest in 1916, and extended to quantum mechanics by Born and Fock in 1928.
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.4\textwidth]{figures/phasespace.png}
+        \caption{\tiny Phase Space \textit{Thomas Foster}}
+    \end{figure}
 
     \column{0.3\textwidth}
     \begin{figure}
@@ -149,30 +159,6 @@
     \textbf{Note:} These are \emph{not} solutions to the time-dependent Schrödinger equation, but rather eigenstates at fixed time $t$.
 \end{frame}
 
-%\begin{frame}{Skip?: Orthonormality and Completeness}
-%    The instantaneous eigenstates satisfy:
-%
-%    \begin{block}{Orthonormality}
-%        \begin{equation}
-%            \braket{n(t)}{m(t)} = \delta_{nm}
-%        \end{equation}
-%    \end{block}
-%
-%    \begin{block}{Completeness}
-%        \begin{equation}
-%            \sum_n \ket{n(t)}\bra{n(t)} = \mathbb{I}
-%        \end{equation}
-%    \end{block}
-%
-%    \vspace{0.3cm}
-%
-%    Any state can be expanded in this instantaneous basis:
-%    \begin{equation}
-%        \ket{\psi(t)} = \sum_n c_n(t) e^{i\theta_n(t)} \ket{n(t)}
-%    \end{equation}
-%
-%    where $c_n(t)$ are complex coefficients and $\theta_n(t)$ are phases to be determined.
-%\end{frame}
 
 % Derivation of the Adiabatic Theorem
 \section{Derivation of the Adiabatic Theorem}
@@ -275,29 +261,6 @@
     \end{block}
 \end{frame}
 
-%\begin{frame}{The Differential Equation for Coefficients}
-%    Substituting back:
-%    
-%    \begin{equation}
-%        \dot{c}_m = - \sum_{n\neq m} c_n e^{i(\theta_n - \theta_m)} \frac{\bra{m}\dot{\Hhat}\ket{n}}{E_n - E_m}
-%    \end{equation}
-%    
-%    The phase difference is:
-%    \begin{equation}
-%        \theta_n - \theta_m = -\frac{1}{\hbar}\int_0^t [E_n(t') - E_m(t')]dt' + [\gamma_n(t) - \gamma_m(t)]
-%    \end{equation}
-%    
-%    \vspace{0.3cm}
-%    
-%    \begin{alertblock}{Key Observation}
-%        The right-hand side contains:
-%        \begin{itemize}
-%            \item $\dot{\Hhat}$ - rate of change of Hamiltonian
-%            \item $E_n - E_m$ - energy gap (in denominator)
-%            \item Rapidly oscillating phase factor
-%        \end{itemize}
-%    \end{alertblock}
-%\end{frame}
 
 \begin{frame}{The Adiabatic Condition}
     For the system to remain in state $\ket{m}$, we need $\dot{c}_m \approx 0$ for $m$ equal to the initial state.
@@ -346,32 +309,6 @@
     \end{theorem}
 \end{frame}
 
-%\begin{frame}{Components of the Phase}
-%    The total phase $\theta_n(t)$ has two parts:
-%    
-%    \begin{block}{1. Dynamical Phase}
-%        \begin{equation}
-%            \theta_n^{\text{dyn}}(t) = -\frac{1}{\hbar}\int_0^t E_n(t')dt'
-%        \end{equation}
-%        This is the familiar time evolution phase from energy.
-%    \end{block}
-%    
-%    \begin{block}{2. Geometric Phase (Berry Phase)}
-%        \begin{equation}
-%            \gamma_n(t) = i\int_0^t\braket{n(t')}{\partial_{t'}n(t')}dt'
-%        \end{equation}
-%        This depends only on the \textbf{path} taken through parameter space, not on the rate of traversal.
-%    \end{block}
-%    
-%    \vspace{0.3cm}
-%    
-%    For a cyclic evolution where $\ket{n(T)} = e^{i\alpha}\ket{n(0)}$:
-%    \begin{equation}
-%        \gamma_n = i\oint \braket{n}{\nabla_R n} \cdot dR
-%    \end{equation}
-%    where $R$ represents the parameters in $\Hhat(R)$.
-%\end{frame}
-
 % Examples and Applications
 \section{Examples and Applications}
 
@@ -411,7 +348,7 @@
 
 \end{frame}
 
-\begin{frame}{Example 2: Two-Level System (Landau-Zener Model) \cite{Landau1932, Zener1932}}
+\begin{frame}{Example 2: Two-Level System (Landau-Zener Model)}
     \begin{columns}
     \hspace{0.25cm}
     \column{0.5\textwidth}
@@ -442,61 +379,6 @@
     \end{columns}
 \end{frame}
 
-%\begin{frame}{Landau-Zener Model}
-%    \begin{columns}
-%    \hspace{0.25cm}
-%    \column{0.55\textwidth}
-%    
-%    \begin{itemize}
-%        \item The energy levels exhibit an \textbf{avoided crossing} at $\epsilon(t) = 0$
-%        \item Minimum gap: $\Delta E_{\min} = 2\Delta$ determines adiabatic time scale
-%    \end{itemize}
-%
-%    \vspace{0.15cm}
-%    
-%    \begin{block}{Adiabatic Condition}
-%        \begin{equation}
-%            T \gg \frac{\hbar}{\Delta E_{\min}} = \frac{\hbar}{2\Delta} \quad \text{and} \quad \left|\dot{\epsilon}\right| \ll \frac{4\Delta^2}{\hbar}
-%        \end{equation}
-%    \end{block}
-%    
-%    This is the canonical model for avoided crossings and adiabatic transitions!
-%    \column{0.45\textwidth}
-%    \centering
-%    \begin{figure}
-%        \centering
-%        \includegraphics[width=\textwidth]{figures/avoided_crossing.png}
-%        \caption{\tiny Avoided crossing energy levels}
-%    \end{figure}
-%    \end{columns}
-%\end{frame}
-%\begin{frame}{Discussion: Avoided Crossing Physics}
-%    \begin{block}{Key Questions}
-%        \begin{enumerate}
-%            \item What happens at the avoided crossing point?
-%            \item Why is this the bottleneck for adiabatic evolution?
-%            \item How does the gap size affect the required evolution time?
-%        \end{enumerate}%
-%    \end{block}
-%    
-%    \vspace{0.3cm}
-%    
-%    \textbf{Physical Insights:}
-%    \begin{itemize}
-%        \item At $\epsilon = 0$: The eigenstates are equal superpositions of diabatic states
-%        \item The gap $2\Delta$ prevents level crossing (quantum mechanical effect)
-%        \item Smaller gap $\Rightarrow$ easier to violate adiabaticity
-%        \item Without the $-\Delta\sigma_x$ term, levels would cross diabatically
-%    \end{itemize}
-%    
-%    \vspace{0.3cm}
-%    
-%    \begin{alertblock}{Critical Insight}
-%        The adiabatic condition is hardest to satisfy near the \textbf{minimum gap}. This is where non-adiabatic transitions (Landau-Zener tunneling) are most likely to occur.
-%    \end{alertblock}
-%\end{frame}
-
-
 % Section 6: Geometric Phase
 \section{Geometric Phase (Berry Phase)}
 
@@ -521,7 +403,6 @@
     
     \vspace{0.3cm}
     
-    \textbf{Properties:}
     \begin{itemize}
         \item Gauge invariant (physical observable)
         \item Geometric: depends only on path, not speed
@@ -548,8 +429,6 @@
     \end{equation}
     
     \vspace{0.3cm}
-    
-    \textbf{Analogy:} Berry phase is like the Aharonov-Bohm phase, but in parameter space rather than real space!
 \end{frame}
 
 % Section 7: Beyond the Simple Picture
@@ -609,7 +488,7 @@
     
     \vspace{0.3cm}
     
-    \begin{block}{Wilczek-Zee Connection \cite{Wilczek1984}}
+    \begin{block}{Wilczek-Zee Connection}
         For degenerate subspace with basis $\{\ket{n_a(R)}\}$:
         \begin{equation}
             (A_i)_{ab} = i\braket{n_a}{\partial_i n_b}
@@ -622,54 +501,9 @@
     Leads to non-Abelian geometric phases (important in topological quantum computation).
 \end{frame}
 
-%\begin{frame}{Discussion: Diabatic vs Adiabatic Evolution}
-%    \begin{columns}
-%    \column{0.5\textwidth}
-%    \textbf{Diabatic Evolution:}
-%    \begin{itemize}
-%        \item Fast changes in $\Hhat(t)$
-%        \item System doesn't track instantaneous eigenstates
-%        \item Transitions between levels
-%        \item Example: Sudden approximation
-%    \end{itemize}
-%    
-%    \vspace{0.3cm}
-%    
-%    \textbf{When applicable:}
-%    \begin{equation}
-%        T \ll \frac{\hbar}{\Delta E}
-%    \end{equation}
-    
-%    \column{0.5\textwidth}
-%    \textbf{Adiabatic Evolution:}
-%    \begin{itemize}
-%        \item Slow changes in $\Hhat(t)$
-%        \item System follows instantaneous eigenstate
-%        \item No transitions (to first order)
-%        \item Example: Born-Oppenheimer
-%    \end{itemize}
-%    
-%    \vspace{0.3cm}
-%    
-%    \textbf{When applicable:}
-%    \begin{equation}
-%        T \gg \frac{\hbar}{\Delta E}
-%    \end{equation}
-%    \end{columns}
-%    
-%    \vspace{0.5cm}
-%    
-%    \begin{block}{Discussion Question}
-%        In between these limits, how do we calculate the transition probability? 
-        
-%        \textbf{Answer:} Landau-Zener formula, perturbation theory, or numerical methods
-%    \end{block}
-%\end{frame}
-
-
 
 % New Section
-\begin{frame}{Application: Adiabatic Quantum Computation \cite{Farhi2000, Albash2018}}
+\begin{frame}{Adiabatic Quantum Computation \cite{Farhi2000, Albash2018}}
 
     \begin{equation}
         \Hhat(t) = (1-s(t))\Hhat_{\text{initial}} + s(t)\Hhat_{\text{problem}}
@@ -687,17 +521,16 @@
     
     \vspace{0.3cm}
     
-    \textbf{Runtime:} $T \sim \mathcal{O}(\hbar/\Delta_{\min}^2)$ where $\Delta_{\min}$ is minimum gap
+    $Time >> (\hbar/\Delta_{\min}^2)$ where $\Delta_{\min}$ is minimum gap
     
     \vspace{0.3cm}
     
-    \textbf{Challenge:} Gap can be exponentially small for some problems!
+    Gap can be exponentially small for some problems!
 \end{frame}
 
-\begin{frame}{Adiabatic Theorem in Quantum Annealing}
-    \textbf{Success condition based on adiabatic theorem:}
-    
-    \begin{block}{Required Annealing Time}
+\begin{frame}{Quantum Annealing}
+
+    \begin{block}{Required Annealing Time for Success}
         \begin{equation}
             T \gg \frac{\hbar}{\Delta_{\min}^2}
         \end{equation}
@@ -719,7 +552,6 @@
     \begin{itemize}
         \item[$+$] Easy problems: Fast annealing possible (microseconds)
         \item[$-$] Hard problems: May need exponentially long annealing time
-        \item[$\pm$] Thermal effects can help/hinder (quantum vs simulated annealing)
     \end{itemize}
 \end{frame}
 
@@ -755,6 +587,9 @@
 \end{frame}
 
 \begin{frame}{The Ising Model}
+    \begin{columns}
+    \hspace{0.5cm}
+    \column{0.7\textwidth}
     \begin{block}{Ising Hamiltonian}
         \begin{equation}
             \hat{H}_{\text{Ising}} = \sum_{i<j} J_{ij} s_i s_j + \sum_i h_i s_i
@@ -774,12 +609,14 @@
         \item $h_i$: Local field on spin $i$ (bias)
     \end{itemize}
     
+    \column{0.3\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Ising.png}
+        \caption{\tiny{Ising model on a graph (spins as vertices, couplings as edges)}}
+    \end{figure}
+    \end{columns}
     \vspace{0.3cm}
-    
-    %\textbf{Quantum Version:}
-    %\begin{equation}
-    %    \hat{H}_{\text{Ising}} = \sum_{i<j} J_{ij} \sigma_i^z \sigma_j^z + \sum_i h_i \sigma_i^z
-    %\end{equation}
     
     This is the \textbf{problem Hamiltonian} in quantum annealing!
 \end{frame}
@@ -801,20 +638,90 @@
     \end{itemize}
 \end{frame}
 
-%\begin{frame}{Energy Landscape: Solution Distribution}
-%    \begin{center}
-%        \includegraphics[width=0.45\textwidth]{figures/maxcut_distribution.png}
-%    \end{center}
-%    
-%    \vspace{-0.3cm}
-%    
-%    \begin{itemize}
-%        \item Out of $2^5 = 32$ possible partitions, only 2 achieve the optimal cut size
-%        \item Most partitions achieve sub-optimal cuts (sizes 3-4)
-%        \item \textbf{Challenge for quantum annealing:} Find the needle in the haystack!
-%        \item Energy landscape roughness determines difficulty
-%    \end{itemize}
-%\end{frame}
+\begin{frame}{Born-Oppenheimer Approximation: Adiabatic Physics in Molecules}
+    \begin{columns}
+    \hspace{0.5cm}
+    \column{0.7\textwidth}
+    \begin{equation*}
+        \Psi(\mathbf{r}, \mathbf{R}) \approx \psi_e(\mathbf{r}; \mathbf{R})\,\chi(\mathbf{R})
+    \end{equation*}
+    \begin{itemize}
+        \item \textbf{Separation of timescales:} Nuclei (heavy) move slowly, electrons adapt instantaneously.  
+        \item The electronic Hamiltonian $H_e(\mathbf{R})$ depends \textit{parametrically} on the nuclear coordinates.  
+        \item By the \textbf{adiabatic theorem}, the electronic state remains in the instantaneous ground state as nuclei evolve slowly.  
+    \end{itemize}
+    \begin{block}{Analogy to Adiabatic Quantum Computing}
+    Slow nuclear motion $\leftrightarrow$ slow Hamiltonian evolution.  
+    Electrons follow adiabatically.  
+    \end{block}
+    \column{0.3\textwidth}
+        \begin{figure}
+        \centering
+        \animategraphics[autoplay, loop, width=\textwidth]{15}{figures/frames_born_oppenheimer/frame_}{0000}{0119}
+        \caption{\tiny Adiabatic evolution of electrons}
+    \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \Huge \textbf{Thank You!}
+
+    \vspace{1cm}
+
+    \large Questions?
+
+
+\end{frame}
+
+% Appendix
+\appendix
+
+\begin{frame}{Appendix: Non TDSE solutions}
+    Suppose the instantaneous eigenproblem holds:
+
+    \begin{equation}
+        \Hhat(t)\ket{n(t)} = E_n(t)\ket{n(t)}.
+    \end{equation}
+
+    Ask whether $\ket{\psi(t)} = e^{i\theta(t)}\ket{n(t)}$ can satisfy the time-dependent Schr\"odinger equation
+    \begin{equation}
+        i\hbar\frac{d}{dt}\ket{\psi(t)} = \Hhat(t)\ket{\psi(t)}.
+    \end{equation}
+
+    Plugging in gives:
+    \begin{equation}
+        i\hbar\left(\dot{\theta}\ket{n} + \ket{\dot{n}}\right) = E_n\ket{n}.
+    \end{equation}
+    Project onto an orthogonal eigenstate $\bra{m(t)}$ with $m\neq n$ to obtain the consistency condition:
+    \begin{equation}
+        i\hbar\braket{m}{\dot{n}} = 0 \quad (m\neq n).
+    \end{equation}
+    But differentiating the eigenvalue equation and projecting onto $\bra{m}$ yields
+    \begin{equation}
+        \braket{m}{\dot{n}} = \frac{\bra{m}\dot{\Hhat}\ket{n}}{E_n - E_m} \quad (m\neq n),
+    \end{equation}
+    which is generally nonzero when $\dot{\Hhat}\neq 0$.
+    Therefore the requirement $\braket{m}{\dot{n}}=0$ fails in general, so the instantaneous eigenstate (up to a phase) is not a solution of the full time-dependent Schr\"odinger equation unless $\dot{\Hhat}=0$ or special additional conditions hold.
+
+\end{frame}
+
+
+\begin{frame}{Appendix: Proof of $\braket{n}{\dot{n}}$ is Purely Imaginary}
+    From normalization: $\braket{n}{n} = 1$
+    Differentiate with respect to time:
+    \begin{equation}
+        \frac{d}{dt}\braket{n}{n} = \braket{\dot{n}}{n} + \braket{n}{\dot{n}} = 0
+    \end{equation}
+    Therefore:
+    \begin{equation}
+        \braket{n}{\dot{n}} = -\braket{\dot{n}}{n} = -\braket{n}{\dot{n}}^*
+    \end{equation}
+
+    This implies $\braket{n}{\dot{n}}$ is purely imaginary.
+    \vspace{0.3cm}
+    We can write: $\braket{n}{\dot{n}} = i\gamma_n(t)$ where $\gamma_n(t)$ is real.
+\end{frame}
 
 \begin{frame}{QUBO: Quadratic Unconstrained Binary Optimization}
     \begin{block}{QUBO Formulation}
@@ -844,165 +751,43 @@
     \end{itemize}
 \end{frame}
 
-%\begin{frame}{Converting Between QUBO and Ising}
-%    \textbf{The mapping is straightforward:}
-%    
-%    \begin{block}{QUBO $\rightarrow$ Ising}
-%        Variable transformation: $x_i = \frac{1 - s_i}{2}$ where $s_i \in \{-1, +1\}$
-%        
-%        \vspace{0.2cm}
-%        
-%        Then: $x_i x_j = \frac{(1-s_i)(1-s_j)}{4} = \frac{1 - s_i - s_j + s_i s_j}{4}$
-%    \end{block}
-%    
-%    \vspace{0.3cm}
-%    
-%    \begin{block}{Ising $\rightarrow$ QUBO}
-%        Inverse transformation: $s_i = 1 - 2x_i$ where $x_i \in \{0, 1\}$
-%        
-%        \vspace{0.2cm}
-%        
-%        Then: $s_i s_j = (1-2x_i)(1-2x_j) = 1 - 2x_i - 2x_j + 4x_i x_j$
-%    \end{block}
-%    
-%    \vspace{0.3cm}
-%    
-%    \textbf{Key Point:} The two formulations are equivalent - choose based on:
-%    \begin{itemize}
-%        \item Natural problem representation
-%        \item Hardware constraints (quantum annealers often use Ising)
-%        \item Software/solver availability
-%    \end{itemize}
-%\end{frame}
+\begin{frame}{Appendix: Derivation of Berry Curvature}
+    Starting from Berry connection:
+    \begin{equation}
+        A_i = i\braket{n}{\partial_i n}
+    \end{equation}
 
-%\begin{frame}{Quantum Annealing Schedule}
-%    \textbf{Standard Quantum Annealing Hamiltonian:}
-%    
-%    \begin{equation}
-%        \hat{H}(t) = A(t) \hat{H}_{\text{driver}} + B(t) \hat{H}_{\text{problem}}
-%    \end{equation}
-%    
-%    \vspace{0.3cm}
-%    
-%    where:
-%    \begin{itemize}
-%        \item $\hat{H}_{\text{driver}} = -\sum_i \sigma_i^x$ (transverse field - creates superposition)
-%        \item $\hat{H}_{\text{problem}} = \sum_{i<j} J_{ij} \sigma_i^z \sigma_j^z + \sum_i h_i \sigma_i^z$ (Ising model)
-%        \item $A(t)$, $B(t)$ are annealing schedules with $A(0) \gg B(0)$ and $A(T) \ll B(T)$
-%    \end{itemize}
-%    
-%    \vspace{0.3cm}
-%    
-%    \textbf{Standard Linear Schedule:}
-%    \begin{align}
-%        A(t) &= A_0 \left(1 - \frac{t}{T}\right) \\
-%        B(t) &= B_0 \frac{t}{T}
-%    \end{align}
-%    
-%    \vspace{0.2cm}
-%    
-%    At $t=0$: Easy ground state $\ket{+}^{\otimes N}$ (all spins in $+x$ direction)
-%    
-%    At $t=T$: Ground state encodes solution to optimization problem
-%\end{frame}
+    The Berry curvature is:
+    \begin{equation}
+        F_{ij} = \partial_i A_j - \partial_j A_i
+    \end{equation}
+    Expanding:
+    \begin{align}
+        F_{ij} &= i\left[\partial_i\braket{n}{\partial_j n} - \partial_j\braket{n}{\partial_i n}\right] \\
+        &= i\left[\braket{\partial_i n}{\partial_j n} + \braket{n}{\partial_i\partial_j n} - \braket{\partial_j n}{\partial_i n} - \braket{n}{\partial_j\partial_i n}\right]
+    \end{align}
+    Since $\partial_i\partial_j = \partial_j\partial_i$:
+    \begin{equation}
+        F_{ij} = i\left[\braket{\partial_i n}{\partial_j n} - \braket{\partial_j n}{\partial_i n}\right]
+    \end{equation}
+\end{frame}
 
-%\begin{frame}{Example: Max-Cut Problem}
-%    \textbf{Problem:} Given graph $G = (V, E)$, partition vertices into two sets to maximize edges between sets.
-%    
-%    \vspace{0.3cm}
-%    
-%    \begin{columns}
-%    \column{0.5\textwidth}
-%    \textbf{QUBO Formulation:}
-%    
-%    Maximize:
-%    \begin{equation}
-%        f(x) = \sum_{(i,j) \in E} (x_i - x_j)^2
-%    \end{equation}
-%    
-%    Expanding:
-%    \begin{equation}
-%        = \sum_{(i,j) \in E} (x_i + x_j - 2x_i x_j)
-%    \end{equation}
-%    
-%    \vspace{0.2cm}
-%    
-%    For minimization (quantum annealer):
-%    \begin{equation}
-%       H_{\text{QUBO}} = -\sum_{(i,j) \in E} (x_i + x_j - 2x_i x_j)
-%    \end{equation}
-%    
-%    \column{0.5\textwidth}
-%    \textbf{Ising Formulation:}
-%    
-%    Using $s_i = 1 - 2x_i$:
-%    
-%    \begin{equation}
-%        H_{\text{Ising}} = -\sum_{(i,j) \in E} (1 - s_i s_j)
-%    \end{equation}
-%    
-%    Simplifies to:
-%    \begin{equation}
-%        H_{\text{Ising}} = \sum_{(i,j) \in E} s_i s_j + \text{const}
-%    \end{equation}
-%    
-%    \vspace{0.1cm}
-%
-%    \textbf{Interpretation:}
-%    \begin{itemize}
-%        \item $s_i = +1$: vertex in set A
-%        \item $s_i = -1$: vertex in set B
-%        \item Minimize $\Rightarrow$ maximize cut
-%   \end{itemize}
-%    \end{columns}
-%\end{frame}
-
-%\begin{frame}{Embedding Problems on Quantum Annealers}
-%    \textbf{Hardware Constraints:}
-%    
-%    Real quantum annealers (e.g., D-Wave) have limited connectivity:
-%    
-%    \vspace{0.3cm}
-%    
-%    \begin{columns}
-%    \column{0.5\textwidth}
-%    \textbf{Chimera Graph (D-Wave):}
-%    \begin{itemize}
-%        \item Unit cells of $K_{4,4}$ bipartite graphs
-%        \item Not fully connected
-%        \item Typical: 2000+ qubits
-%        \item Connectivity: $\sim$6 per qubit
-%    \end{itemize}
-%    
-%    \vspace{0.3cm}
-%    
-%    \textbf{Pegasus Graph (newer):}
-%    \begin{itemize}
-%        \item Higher connectivity ($\sim$15)
-%        \item 5000+ qubits
-%        \item Better for dense problems
-%    \end{itemize}
-%    
-%    \column{0.5\textwidth}
-%    \textbf{Minor Embedding:}
-%    
-%    Problem: Map logical problem graph to hardware graph
-%    
-%    \vspace{0.3cm}
-%    
-%    \textbf{Technique:} Chain multiple physical qubits to represent one logical qubit
-%    
-%    \vspace{0.3cm}
-%    
-%    \textbf{Challenges:}
-%    \begin{itemize}
-%        \item Uses more qubits
-%        \item Requires strong ferromagnetic coupling for chains
-%        \item Chain breaks $\Rightarrow$ errors
-%    \end{itemize}
-%    
-%    \end{columns}
-%\end{frame}
+\begin{frame}{Appendix: Completeness Relation}
+    Using completeness: $\sum_m\ket{m}\bra{m} = \mathbb{I}$
+    We can write:
+    \begin{equation}
+        \ket{\partial_i n} = \sum_m \ket{m}\braket{m}{\partial_i n}
+    \end{equation}
+    Therefore:
+    \begin{align}
+        \braket{\partial_i n}{\partial_j n} &= \sum_{m,k}\braket{\partial_i n}{k}\braket{k}{m}\braket{m}{\partial_j n} \\
+        &= \sum_m \braket{\partial_i n}{m}\braket{m}{\partial_j n}
+    \end{align}
+    The Berry curvature becomes:
+    \begin{equation}
+        F_{ij} = i\sum_{m\neq n}\left[\braket{\partial_i n}{m}\braket{m}{\partial_j n} - \braket{\partial_j n}{m}\braket{m}{\partial_i n}\right]
+    \end{equation}
+\end{frame}
 
 \begin{frame}[allowframebreaks]{References}
     \printbibliography
