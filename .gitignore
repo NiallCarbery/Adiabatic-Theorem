@@ -37,9 +37,6 @@
 *.bcf
 *.run.xml
 
-# Notebook outputs
-*.ipynb
-
 # Figures/frames (optional)
 figures/frames/
 figures/frames_*/*
