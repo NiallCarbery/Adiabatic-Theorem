@@ -30,9 +30,6 @@
 *.synctex.gz
 *.xdv
 
-# Ignore generated PDFs
-*.pdf
-
 # Biber/BCF files and related LaTeX helpers
 *.bcf
 *.run.xml
